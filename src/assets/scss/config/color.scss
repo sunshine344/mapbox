@@ -1,0 +1,47 @@
+@charset 'utf-8';
+
+:root {
+    --fontFamily: "Arial";
+    // Page color
+    // 主色调
+    --defaultColor: #1890ff;
+    // 常规辅助色
+    --auxColor: #69b7ff;
+    // 补充辅助色
+    --comColor: #e6f7ff;
+    // 主体字体色
+    --defaultFontColor: #666666;
+    // 辅助字体色（不可点击文字）
+    --auxFontColor: #8c8c8c;
+    // 补充辅助字体色 (提示文字)
+    --comFontColor: #bfbfbf;
+    // 标题文字用色
+    --titleFontColor: #262626;
+    // 警告、必填提示文字色
+    --errorFontColor: #f5222d;
+    // 输入框、分割线颜色
+    --borderColor: #d9d9d9;
+
+    // 页面主题背景色
+    --defaultBackgroundColor: #f0f2f5;
+    // 导航栏字体色
+    --headerFontColor: #333333;
+    // 横导航栏背景色
+    --headerBgColor: #7f65b2;
+    // 横导航栏背景色
+    --auxHeaderBgColor: #409eff;
+    // 竖导航背景色
+    --navBackgroundColor: #2b2b2b;
+    // 竖导选中文字景色
+    --activeFontColor: #ffffff;
+    // 导航选中背景色
+    --activeNavBackgroundColor: rgba(0, 0, 0, 0.2);
+    // 菜单文字颜色
+    --meunTextColor: white;
+    // hover
+    --hover: var(--defaultColor);
+    //边框
+    --border: #d9d9d9;
+    //提示
+    --tip: #bfbfbf;
+}

@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "allowJs": true,
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "lib": ["esnext", "dom"],
+    "baseUrl": "./",
+		"paths": {
+      "@/": ["./src/*"],
+      "@api/": ["./src/api/*"],
+      "@scss/": ["./src/scss/*"],
+      "@view/": ["./src/view/*"],
+      "@images/": ["./src/images/*"],
+      "@config/": ["./src/config/*"],
+      "@shared/": ["./src/shared/*"],
+      "@store/": ["./src/config/store/*"],
+      "@router/": ["./src/config/router/*"],
+      "@containers/": ["./src/containers/*"],
+      "@components/": ["./src/components/*"]
+		},
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+}

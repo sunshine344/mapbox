@@ -1,0 +1,147 @@
+@charset 'utf-8';
+
+.drag {
+    -webkit-app-region: drag;
+}
+
+.noneuseSelect {
+    -moz-user-select: none;
+    /* Firefox私有属性 */
+    -webkit-user-select: none;
+    /* WebKit内核私有属性 */
+    -ms-user-select: none;
+    /* IE私有属性(IE10及以后) */
+    -khtml-user-select: none;
+    /* KHTML内核私有属性 */
+    -o-user-select: none;
+    /* Opera私有属性 */
+    user-select: none;
+    /* CSS3属性 */
+}
+
+.space {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.is-checked .el-switch__core {
+    border-color: var(--defaultColor);
+    background-color: var(--defaultColor);
+}
+
+.el-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    img {
+        height: auto;
+    }
+}
+
+// 小标题
+.el-sub-title {
+    color: var(--titleFontColor);
+    font-size: var(--subtitleSize);
+}
+
+// 标题
+.el-title {
+    color: var(--titleFontColor);
+    font-size: var(--defaultTileSize);
+}
+
+// 说明
+.el-info {
+    color: var(--comFontColor);
+    font-size: var(--defaultFontSize);
+}
+
+//  警告、必填提示
+.el-error {
+    color: var(--errorFontColor);
+    font-size: var(--defaultFontSize);
+}
+
+// flex
+.el-flex {
+    display: flex;
+}
+
+.flex {
+    flex: 1
+}
+
+// 居中VG
+.el-content {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.el-t-title {
+    padding: calc(var(--spacing) / 2) 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+// left
+.el-left {
+    text-align: left;
+    justify-content: left;
+    align-items: flex-start;
+}
+
+// right
+.el-right {
+    text-align: right;
+    justify-content: right;
+    align-items: flex-end;
+}
+
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+    transition: all 1s;
+}
+
+.fade-transform-enter {
+    opacity: 0;
+    transform: translateX(-6.25rem);
+}
+
+.fade-transform-leave-to {
+    opacity: 0;
+    transform: translateX(6.25rem);
+}
+
+$TYPE_THEME: ((className: success, backgroundColor: #67C23A),
+    (className: warning, backgroundColor: #E6A23C),
+    (className: info, backgroundColor: #909399),
+    (className: error, backgroundColor: #F56C6C));
+
+@for $i from 1 through length($TYPE_THEME) {
+    $item: nth($TYPE_THEME, $i);
+
+    .el-color-#{map-get($item, className)} {
+        color: map-get($item, backgroundColor);
+    }
+
+    .el-bg-#{map-get($item, className)} {
+        color: white;
+        background-color: map-get($item, backgroundColor);
+    }
+}
+
+@media only screen and (max-width: 64.0625rem) {
+
+    body,
+    html {
+        width: 64rem !important;
+    }
+}

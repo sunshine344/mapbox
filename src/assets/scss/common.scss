@@ -1,0 +1,168 @@
+@charset 'utf-8';
+@import './common.config.scss';
+
+* {
+    box-sizing: border-box;
+}
+
+body,
+html,
+#app {
+    width: 100%;
+    height: 100%;
+    font-family: var(--fontFamily);
+    font-weight: 400;
+    font-size: var(--defaultFontSize);
+    color: var(--defaultFontColor);
+    line-height: var(--lineSpacing);
+}
+
+/** 清除内外边距 **/
+body,
+html,
+#app,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+/* structural elements 结构元素 */
+dl,
+dt,
+dd,
+ul,
+ol,
+/* list elements 列表元素 */
+pre,
+/* text formatting elements 文本格式元素 */
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+th,
+td {
+    margin: 0;
+    padding: 0;
+}
+
+/** 设置默认字体 **/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+}
+
+address,
+cite,
+dfn,
+em,
+var {
+    font-style: normal;
+}
+
+/* 将斜体扶正 */
+code,
+kbd,
+pre,
+samp {
+    font-family: courier, new courier, monospace;
+}
+
+/* 统一等宽字体 */
+small {
+    font-size: .75rem;
+}
+
+
+/** 重置列表元素 **/
+ul,
+ol {
+    list-style: none;
+}
+
+/** 重置文本格式元素 **/
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+/** 重置表单元素 **/
+legend {
+    color: #000;
+}
+
+/* for ie6 */
+fieldset,
+img {
+    border: 0;
+}
+
+img[src=""],
+img:not([src]) {
+    border: 0;
+    opacity: 0;
+}
+
+/* img 搭车：让链接里的 img 无边框 */
+button,
+input,
+select,
+textarea {
+    font-size: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 使得表单元素在 ie 下能继承字体大小 */
+/* 注：optgroup 无法扶正 */
+
+/** 重置表格元素 **/
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+
+::-webkit-scrollbar {
+    width: .25rem;
+    /*对垂直流动条有效*/
+    height: .25rem;
+    /*对水平流动条有效*/
+    position: fixed;
+}
+
+/*定义滚动条的轨道颜色、内阴影及圆角*/
+::-webkit-scrollbar-track {
+    background-color: none;
+    border-radius: var(--radius);
+}
+
+/*定义滑块颜色、内阴影及圆角*/
+::-webkit-scrollbar-thumb {
+    border-radius: var(--radius);
+    background-color: var(--defaultColor);
+}
+
+/*定义两端按钮的样式*/
+::-webkit-scrollbar-button {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/*定义右下角汇合处的样式*/
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0);
+}

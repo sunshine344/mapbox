@@ -1,0 +1,40 @@
+@charset 'utf-8';
+
+:root {
+    // page commom size
+    // 默认字体大小
+    --defaultFontSize: .875rem;
+    // 描述及提示文字大小
+    --promptTextSize: .75rem;
+    // 小标题文字大小
+    --subtitleSize: 1rem;
+    // 一般标题文字大小
+    --defaultTileSize: 1.25rem;
+    // 大标题文字大小
+    --headlineSize: 3.125rem;
+    // 行间距
+    --lineSpacing: 1.777777777;
+    // 间距
+    --spacing: .9375rem;
+    // 边角
+    --radius: .25rem;
+    // inupt buttom height
+    --defaultHeight: 2.25rem;
+
+    // 头像大小
+    --avatarSize: 2.625rem;
+
+    // header config
+    --headerHeight: 3.125rem;
+    // 导航栏宽度
+    --siderWidth: 16.25rem;
+    // 导航栏收起宽度
+    --subSiderWidth: 2.5rem;
+
+    //The configurable properties of input element
+    --inputHeight: 2rem;
+    --inputBorderRadius: var(--radius);
+    --inputPadding: 0 .75rem;
+    // 门户导航高度
+    --headerWrapperHeight: 5rem;
+}
