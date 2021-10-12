@@ -2,7 +2,7 @@
   "name": "emodel",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --host -- --mode ENV_TYPE=dev -- --mode SYS_TYPE=enterprise",
+    "dev": "vite --host -- --mode ENV_TYPE=dev --mode NODE_ENV=NODE_ENV ",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
     "test": "jest",
@@ -10,7 +10,7 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "igu": "^1.1.3",
+    "igu": "^1.1.5",
     "sass": "^1.41.1",
     "vue": "^3.2.6",
     "vue-router": "^4.0.11",
@@ -28,11 +28,11 @@
     "@vitejs/plugin-vue": "^1.6.1",
     "@vue/compiler-sfc": "^3.2.6",
     "@vue/test-utils": "^2.0.0-rc.15",
+    "ambiences": "^1.0.6",
     "babel-jest": "^26.6.3",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "jest": "^26.6.3",
     "mockjs": "^1.1.0",
-    "p.fs.amb": "^1.0.7",
     "postcss-pxtorem": "^6.0.0",
     "sinon": "^11.1.2",
     "ts-jest": "^26.4.4",

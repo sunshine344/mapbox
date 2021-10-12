@@ -4,10 +4,9 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:25:24
  * @LastEditors  : Pat
- * @LastEditTime : 2021-09-18 11:41:43
+ * @LastEditTime : 2021-10-12 17:23:20
  */
-import ambfs from "p.fs.amb";
-import { AnyObject } from 'igu/core/utils';
+import { AnyObject } from 'igu/lib/core/utils';
 
 export type ProxyItem = [string, string];
 
@@ -80,6 +79,5 @@ export function wrapperEnv(envConf: AnyObject = {}): ViteEnv {
         ret[envName] = realName;
         process.env[envName] = realName;
     };
-    ambfs();
     return ret;
 };

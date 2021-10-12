@@ -4,11 +4,11 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2020-12-15 11:47:20
  * @LastEditors  : Pat
- * @LastEditTime : 2021-09-27 16:41:33
+ * @LastEditTime : 2021-10-12 17:30:30
  */
-import amb from "@/init/amb";
-import { isArray, isObject, isString } from "igu/core/basic";
-import { objectEach } from "igu/core/utils";
+import { config } from "@/amb";
+import { isArray, isObject, isString } from "igu/lib/core/basic";
+import { objectEach } from "igu/lib/core/utils";
 export declare interface StorageOption {
     value: any,
     expires: number | string,
@@ -59,13 +59,13 @@ function Case(str: string): string {
  */
 export function setup(name: any, params: any, expires: string | number = (60 * 1000) * 60 * 24): any {
     if (isArray(name)) {
-        name.forEach((item, i) => setup(item, params[i], expires));
+        name.forEach((item: any, i: any) => setup(item, params[i], expires));
         return;
     } else if (isObject(name)) {
         objectEach(name, (i: any, item: string | number) => setup(item, i, expires));
         return;
     } else if (isString(name)) {
-        name = `${amb.sysType || ''}${name}`;
+        name = `${config?.sysType || ''}${name}`;
         let options: StorageOption = {
             // Storage option params
             value: params,
@@ -94,7 +94,7 @@ export function setup(name: any, params: any, expires: string | number = (60 * 1
  * @author: Pat
  */
 export function getsub(name: string): any {
-    name = `${amb.sysType || ''}${name}`;
+    name = `${config?.sysType || ''}${name}`;
     let item: string | null | any = Storage.getItem(name);
     if (isJSON(item)) {
         item = JSON.parse(item);
@@ -125,8 +125,8 @@ export function getsub(name: string): any {
  */
 export function removeSub(...name: any): any {
     if (!name) { clear(); return; };
-    !Array.isArray(name) && Storage.removeItem(name.includes(`${amb.sysType || ''}`) ? name : `${amb.sysType || ''}${name}`);
-    Array.isArray(name) && name.forEach((str: string) => Storage.removeItem(str.includes(`${amb.sysType || ''}`) ? str : `${amb.sysType || ''}${str}`));
+    !Array.isArray(name) && Storage.removeItem(name.includes(`${config?.sysType || ''}`) ? name : `${config?.sysType || ''}${name}`);
+    Array.isArray(name) && name.forEach((str: string) => Storage.removeItem(str.includes(`${config?.sysType || ''}`) ? str : `${config?.sysType || ''}${str}`));
 }
 
 /**

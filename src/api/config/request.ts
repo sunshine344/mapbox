@@ -4,16 +4,14 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-18 13:45:36
  * @LastEditors  : Pat
- * @LastEditTime : 2021-09-27 10:48:52
+ * @LastEditTime : 2021-10-12 18:08:19
  */
 // import Route from "@router";
-import api from "@/init/api.js";
-import amb from "@/init/amb.js";
-import { AxiosRequestConfig, AxiosResponse } from "axios";
+import { config, api } from "@/amb";
 import { getsub, removeSub } from "@shared/storage";
-import request, { useIRequest, useIResponse, useIConfig } from "igu/core/request";
+import request, { useRequest, useResponse, useConfig, AxiosRequestConfig, AxiosResponse } from "igu/lib/core/request";
 
-useIConfig({
+useConfig({
     defaults: {
         // Set response time
         timeout: 5 * 10000,
@@ -24,17 +22,17 @@ useIConfig({
     }
 });
 
-useIRequest(({ url, method, ...config }: AxiosRequestConfig) => {
-    if (!amb.mock) {
+useRequest(({ url, method, ...requestConfig }: AxiosRequestConfig) => {
+    if (!config?.mock) {
         let tk = getsub("token");
         if (tk) {
-            config.headers['Token'] = tk;
+            requestConfig.headers['Token'] = tk;
         };
     };
-    return { url, method, ...config };
+    return { url, method, ...requestConfig };
 });
 
-useIResponse((res: AxiosResponse<any>) => {
+useResponse((res: AxiosResponse<any>) => {
     let { code } = res.data;
     if (code == 302 || code == 401) {
         removeSub(["token", "userInfo", "menu", "iportalMenu"])

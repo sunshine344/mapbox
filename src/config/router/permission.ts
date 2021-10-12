@@ -9,8 +9,8 @@
 import asyncRoutes from "@router/core/asyncRoutes";
 import { getsub, setup } from "@shared/storage";
 import type { RouteLocationNormalized, NavigationGuardNext } from "vue-router";
-import { cloneDeep, AnyObject } from "igu/core/utils";
-import { isEqual } from "igu/core/basic";
+import { cloneDeep, AnyObject } from "igu/lib/core/utils";
+import { isEqual } from "igu/lib/core/basic";
 let currentRouters: any;
 let _Str: AnyObject = String.prototype, _Arr: AnyObject = Array.prototype;;
 _Str.toSplit = function (str: string) {

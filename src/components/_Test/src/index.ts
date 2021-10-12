@@ -6,7 +6,7 @@
  * @LastEditors  : Pat
  * @LastEditTime : 2021-09-28 14:48:29
  */
-import { AnyObject } from 'igu/core/utils';
+import { AnyObject } from 'igu/lib/core/utils';
 import { defineComponent, App } from 'vue';
 
 const props = {

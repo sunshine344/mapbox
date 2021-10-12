@@ -6,7 +6,7 @@
  * @LastEditors  : Pat
  * @LastEditTime : 2021-09-24 16:19:32
  */
-import { AnyObject } from "igu/core/utils";
+import { AnyObject } from "igu/lib/core/utils";
 /**
  * @description: Output object parameters based on array conditions
  * @param {AnyObject} object Object to be processed

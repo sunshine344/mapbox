@@ -6,7 +6,7 @@
  * @LastEditors  : Pat
  * @LastEditTime : 2021-09-28 14:28:18
  */
-import { AnyObject } from "igu/core/utils";
+import { AnyObject } from "igu/lib/core/utils";
 import { output, eachModules, isType } from "@shared/_utlis";
 
 export { RequestObject } from "@config/type/global";

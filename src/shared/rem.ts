@@ -6,7 +6,7 @@
  * @LastEditors  : Pat
  * @LastEditTime : 2021-09-24 11:21:23
  */
-import request from "igu/core/request";
+import request from "igu/lib/core/request";
 export async function requestConfig() {
     await request('get', '', {});
 }

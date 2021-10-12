@@ -8,7 +8,7 @@
  */
 import type { App } from 'vue';
 import { createStore } from 'vuex';
-import { AnyObject } from "igu/core/utils";
+import { AnyObject } from "igu/lib/core/utils";
 import { eachModules } from "@shared/_utlis";
 // Set global vuex getters
 let modules: AnyObject = {}, getter: AnyObject = {};

@@ -4,18 +4,30 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2021-09-28 14:30:36
+ * @LastEditTime : 2021-10-12 17:57:10
  */
 declare module "*.vue" {
 	import Vue from "vue";
 	export default Vue;
 }
 
-
-declare module "*" {
-	const file: any;
-	export default file;
+declare module "@/amb" {
+	export const api: AnyObject;
+	export const config: AnyObject;
+	export const ENV: string;
+	export default AnyObject;
 }
+
+declare module "@components/*" {
+	const components: any;
+	export default components;
+}
+
+
+// declare module "*" {
+// 	const file: any;
+// 	export default file;
+// }
 
 // declare module all files type
 // Prevent errors during development
@@ -26,6 +38,11 @@ declare module "@shared/storage" {
 	export const clearAll: Function;
 	export const clear: Function;
 	export default Storage;
+}
+
+declare module "@shared/rem" {
+	const rem: any;
+	export default rem;
 }
 
 declare module "@shared/_utlis" {

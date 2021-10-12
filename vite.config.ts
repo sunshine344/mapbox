@@ -4,14 +4,16 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2021-09-27 14:09:26
+ * @LastEditTime : 2021-09-30 15:11:38
  */
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue'
 import legacy from '@vitejs/plugin-legacy';
-import { defineConfig, ConfigEnv, loadEnv } from 'vite'
+import { ambiences } from 'ambiences';
+import { defineConfig, ConfigEnv, loadEnv, PluginOption } from 'vite'
 import { createProxy, wrapperEnv, getOutDirName } from "./config/common";
 export const pathResolve = (dir: string) => resolve(__dirname, '.', dir);
+// console.log(ambience)
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): any => {
 	const root = process.cwd();
@@ -36,6 +38,7 @@ export default ({ command, mode }: ConfigEnv): any => {
 			}
 		},
 		plugins: [
+			ambiences('js', "build") as unknown as PluginOption,
 			vue(),
 			legacy({
 				targets: ['> 1%, last 1 version, ie >= 11'],
