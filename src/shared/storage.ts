@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2020-12-15 11:47:20
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-12 17:30:30
+ * @LastEditTime : 2021-10-14 16:59:24
  */
 import { config } from "@/amb";
 import { isArray, isObject, isString } from "igu/lib/core/basic";
@@ -14,7 +14,7 @@ export declare interface StorageOption {
     expires: number | string,
     startTime: number
 }
-const Storage = window.localStorage || (window.global.localStorage || global.localStorage);
+const Storage = window.localStorage || (globalThis.localStorage);
 /**
  * @description: Determine whether the data type is the specified type
  * @param {any} obj all data type

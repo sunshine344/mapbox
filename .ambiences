@@ -1,22 +1,25 @@
-// 开发环境
 [[dev]]
+// 开发环境
 [api]
 BASE_URL = ""
 [config]
 systemName = "DevDependencies system name";
+env_type="dev"
 
-// 测试环境
 [[test]]
+// 测试环境
 [api]
 BASE_URL = "http://xxx.test.pro.com"
 [config]
 // 系统名称
 systemName = "Test system name";
+env_type="test"
 
-// 正式环境
 [[production]]
+// 正式环境
 [api]
 BASE_URL = "http://xxx.api.pro.com"
 [config]
 // 系统名称
 systemName = "Production system name";
+env_type="production"

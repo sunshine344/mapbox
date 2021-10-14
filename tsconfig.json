@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["vite/client"],
     "target": "esnext",
     "allowJs": true,
     "useDefineForClassFields": true,
@@ -10,7 +11,7 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "lib": ["esnext", "dom"],
     "baseUrl": "./",
 		"paths": {

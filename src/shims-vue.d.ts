@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-12 17:57:10
+ * @LastEditTime : 2021-10-14 17:01:33
  */
 declare module "*.vue" {
 	import Vue from "vue";
@@ -57,6 +57,10 @@ declare module "@api/core/use" {
 	export const Login: Function;
 }
 
+declare module "@router/core/*" {
+	const routercore: any;
+	export default routercore;
+}
 
 declare module "@/init/amb" {
 	const amb: any;

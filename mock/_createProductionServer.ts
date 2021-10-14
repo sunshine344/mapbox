@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-01-26 15:19:43
  * @LastEditors  : Pat
- * @LastEditTime : 2021-04-06 17:17:24
+ * @LastEditTime : 2021-10-14 16:53:59
  */
 // import Mock from "mockjs";
 import { createProdMockServer } from 'vite-plugin-mock/es/createProdMockServer';
@@ -17,7 +17,7 @@ Object.keys(modules).forEach((key) => {
 // Used in a production environment. 
 // Need to manually import all modules
 export function setupProdMockServer() {
-	let currentMockURL = {};
+	let currentMockURL: AnyObject = {};
 	// console.log("%c启用mock接口%c", "color:red;font-weight:bold", "color:black;")
 	Object.keys(mockModules).map((i: any) => {
 		let name = mockModules[i].method + "API";

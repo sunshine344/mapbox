@@ -2,8 +2,9 @@
   "name": "emodel",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --host -- --mode ENV_TYPE=dev --mode NODE_ENV=NODE_ENV ",
-    "build": "vue-tsc --noEmit && vite build",
+    "dev": "vite --host --mode NODE_ENV=dev",
+    "production": "vite --host --mode NODE_ENV=production",
+    "build": "vue-tsc --noEmit && vite build --mode NODE_ENV=production",
     "serve": "vite preview",
     "test": "jest",
     "test:watch": "jest --watch",
