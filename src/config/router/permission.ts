@@ -4,13 +4,14 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-02-30 10:40:45
  * @LastEditors  : Pat
- * @LastEditTime : 2021-09-26 14:34:00
+ * @LastEditTime : 2021-10-16 19:54:06
  */
 import asyncRoutes from "@router/core/asyncRoutes";
 import { getsub, setup } from "@shared/storage";
 import type { RouteLocationNormalized, NavigationGuardNext } from "vue-router";
 import { cloneDeep, AnyObject } from "igu/lib/core/utils";
 import { isEqual } from "igu/lib/core/basic";
+import { actions, state } from "@store";
 let currentRouters: any;
 let _Str: AnyObject = String.prototype, _Arr: AnyObject = Array.prototype;;
 _Str.toSplit = function (str: string) {
@@ -38,7 +39,7 @@ export default function ({ beforeEach, addRoute, getRoutes, afterEach, removeRou
     afterEach(() => { });
     // This's vue router beforeEcah routers
     beforeEach(async (to: RouteLocationNormalized, { path: _fromPath }: RouteLocationNormalized, next: NavigationGuardNext) => {
-        const token = getsub("token");
+        const token = state.use.token;
         // let { code } = getUrlQuery(location.href);
         let { path: _toPath, meta: { name: _toMetaTitle, allowBack }, name: _toName, fullPath } = to as AnyObject;
         // Used as a login page, the browser cannot move forward or backward

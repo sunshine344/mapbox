@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-18 13:45:36
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-12 18:08:19
+ * @LastEditTime : 2021-10-15 14:39:26
  */
 // import Route from "@router";
 import { config, api } from "@/amb";
@@ -41,6 +41,13 @@ useResponse((res: AxiosResponse<any>) => {
     return res
 });
 
-export const src = api;
+let resApi: AnyObject = api;
+if (api?.BASE_API_CONFIG) {
+    request.get('post', api?.BASE_API_CONFIG).then((res: AnyObject) => {
+        resApi = res;
+    })
+}
+
+export const src = resApi;
 
 export default request;

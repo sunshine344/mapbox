@@ -4,13 +4,12 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-12 18:06:30
+ * @LastEditTime : 2021-10-15 15:11:34
  */
 import App from './App';
 import { createApp } from 'vue'
 import { config, ENV } from "@/amb";
 import { setRoute } from '@router';
-import { setupStore } from "@store";
 import requestRem from "@shared/rem";
 import { setTitle } from "igu/lib/core/utils";
 import '@scss/common.scss';
@@ -18,7 +17,6 @@ import "@components/Message/src/scss/index.scss";
 import { setupProdMockServer } from '../mock/_createProductionServer';
 const app = createApp(App);
 setRoute(app);
-setupStore(app);
 requestRem(1920);
 config?.moduleName && setTitle(config.moduleName);
 // Turn off vue related warning messages

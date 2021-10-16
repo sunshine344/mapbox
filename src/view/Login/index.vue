@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-18 15:30:56
  * @LastEditors  : Pat
- * @LastEditTime : 2021-09-30 16:53:42
+ * @LastEditTime : 2021-10-16 20:12:50
 -->
 <template>
 	<div class="login">
@@ -42,9 +42,10 @@
 <script lang="ts">
 import { defineComponent, reactive, ref, withKeys } from "vue";
 import {Login} from "@api/core/use";
-import { setup, removeSub } from "@shared/storage";
 import Message from "@components/Message";
 import { useRouter } from "vue-router";
+import { actions } from "@store";
+
 const ues = reactive({
 	username: "",
 	password: "",
@@ -61,10 +62,8 @@ async function iLogin() {
 	}
 	const { code, msg, data } = await Login(ues);
 	if (code === 200) {
-		setup({
-			token: data.token,
-			user: data,
-		});
+		actions.updateUser(data);
+		actions.updateToken(data.token);
 		getValue(route, "push")("/home");
 	}
 	Message[code === 200 ? "success" : "error"](msg);
@@ -78,7 +77,7 @@ function verification() {
 export default defineComponent({
 	setup() {
 		route.value = useRouter();
-		removeSub("user", "token");
+		localStorage.removeItem("--APP-STORAGE--");
 		return {
 			list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 			ues,

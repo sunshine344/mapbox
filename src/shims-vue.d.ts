@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-14 17:01:33
+ * @LastEditTime : 2021-10-16 19:09:10
  */
 declare module "*.vue" {
 	import Vue from "vue";
@@ -74,9 +74,9 @@ declare module "@router" {
 	export default route;
 }
 declare module "@store" {
-	import { Store } from 'vuex';
-	const store: Store<any>;
-	export const setupStore: Function;
+	const store: any;
+	export const actions: AnyObject;
+	export const state: AnyObject;
 	export default store;
 }
 

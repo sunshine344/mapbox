@@ -14,8 +14,7 @@
     "igu": "^1.1.5",
     "sass": "^1.41.1",
     "vue": "^3.2.6",
-    "vue-router": "^4.0.11",
-    "vuex": "^4.0.2"
+    "vue-router": "^4.0.11"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",

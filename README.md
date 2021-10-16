@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2021-09-28 14:58:44
+ * @LastEditTime : 2021-10-15 14:27:49
 -->
 # EModel for Vue
 Vue 3.0 + vite + ts
@@ -34,24 +34,46 @@ yarn build
 ```
 
 ## 环境配置
-[amb]:https://www.npmjs.com/package/p.fs.amb
-环境配置采用 [p.fs.amb][amb] 系统配置文件生成器（解决多余IP暴露引起的安全性问题）
+[ambiences]:https://www.npmjs.com/package/ambiences
+环境配置采用 [ambiences][ambiences] 多环境webpck\vite plugins配置生成当前环境配置（解决多余IP暴露引起的安全性问题）。
 
-然后在打包配置文件(`vite.config.js`)添加 `require("p.fs.amb")()`;
+然后在打包配置文件(`vite.config.js`) 内 `plugins` 添加 `ambiences(build_file_type, build_file_name)`;
 
+
+### .ambiences 配置示例
 ```
-dev 环境默认开启 mock 数据模拟，其他环境根据对应 amb 文件配置的 mock 状态控制（mock:true）
-打包默认关闭mock（mock:false）
+[[dev]]
+// 开发环境
+[api]
+requestURL = "http://xxx.api.dev.com"
+[config]
+systemName = "DevDependencies system name";
+
+[[test]]
+// 测试环境
+[api]
+requestURL = "http://xxx.test.pro.com"
+[config]
+// 系统名称
+systemName = "Test system name";
+
+[[production]]
+// 正式环境
+[api]
+requestURL = "http://xxx.api.pro.com"
+[config]
+// 系统名称
+systemName = "Production system name";
 ```
 
 ## Mock
-在 `amb` 文件夹下的文件内对象的参数 `mock` 为 `true`时启用。
+在开发环境下 `mock` 应该为启用。
 添加新的数据接口时都需要在 `mock/model` 下添加对应文件 `xxx.mock.(t|j)s`。
 
 示例请查看 `mock/model/login.mock.ts`
 
 ## Api
-`src/api` 文件夹下管理系统前后端交互接口。`src/api/request` 是`axios`二次封装成果，大致配置与`axios`相同，暴露`['put', 'post', 'get', 'delete', 'head', 'patch','json','formData','uploadFile','upload']`等请求方法。
+`src/amb.js` 文件 `api` 参数为数据接口配置。`src/api/request` 是`axios`二次封装成果，大致配置与`axios`相同，暴露`['put', 'post', 'get', 'delete', 'head', 'patch','json','formData','uploadFile','upload']`等请求方法。
 
 每个模块的请求都单独一个文件新建到 `src/api/core` 下。
 
