@@ -1,10 +1,10 @@
 /*
  * @Autor        : Pat
- * @Description  :
+ * @Description  : stamina store
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-10-15 15:06:27
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-16 20:13:16
+ * @LastEditTime : 2021-10-16 20:32:41
  */
 import { watch, toRaw, readonly, reactive } from 'vue';
 const STORAGE_KEY = '--APP-STORAGE--'
@@ -19,7 +19,16 @@ function getItem(key?: string) {
     const stateRow = JSON.parse(stateStr) || {}
     return key ? stateRow[key] || {} : stateRow
 };
-export function createPersistStorage<T>(state: any, key = 'default', isModel: boolean = false): T {
+/**
+ * @description: Create long storage space
+ * @param {any} state  store state object
+ * @param {string|undefined} key storage space name ,default 'default'
+ * @param {boolean} isModel Whether it is a template group, if it is reactive, otherwise it will return readonly as a single unit
+ * @return {AnyObject}
+ * @Date: 2021-10-16 20:29:11
+ * @author: Pat
+ */
+export function createPersistStorage<T>(state: any, key: string | undefined = 'default', isModel: boolean = false): T {
     Object.entries(getItem(key)).forEach(([key, value]) => (state[key] = value));
     watch(state, () => setItem(key, toRaw(state)));
     return isModel ? reactive(state) : readonly(state)
