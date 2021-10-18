@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-14 17:20:00
+ * @LastEditTime : 2021-10-18 18:05:27
  */
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue'
@@ -19,7 +19,7 @@ export default ({ command, mode }: ConfigEnv): any => {
 	const root = process.cwd();
 	const env = loadEnv(mode, root);
 	const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_LEGACY } = wrapperEnv(env);
-	const outDir = getOutDirName(mode) || 'dist';
+	const outDir = `dist/${getOutDirName(mode) || 'dist'}`;
 	return defineConfig({
 		root,
 		resolve: {
@@ -38,13 +38,20 @@ export default ({ command, mode }: ConfigEnv): any => {
 			}
 		},
 		plugins: [
-			ambiences('js', "build") as unknown as PluginOption,
 			vue(),
 			legacy({
 				targets: ['> 1%, last 1 version, ie >= 11'],
 				// 面向IE11时需要此插件
 				additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
-			})
+			}),
+			ambiences('json', outDir, {
+				// 开发环境需要什么amb.*类型文件，可选 ts、tsx、js、jsx
+				env: "ts",
+				// 开发环境中配置文件输出到什么目录
+				path: "src/config",
+				// 当前是否为生产版本
+				// isPro: false
+			}) as unknown as PluginOption
 		],
 		define: {
 			__VUE_I18N_LEGACY_API__: false,
@@ -59,7 +66,7 @@ export default ({ command, mode }: ConfigEnv): any => {
 			// If the directory exists, it will be deleted before building.
 			// The default is "dist"
 			// outDir: OUT_DIR_NAME,
-			outDir: `dist/${outDir}`,
+			outDir,
 			polyfillDynamicImport: VITE_LEGACY,
 			terserOptions: {
 				compress: {

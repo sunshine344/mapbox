@@ -4,24 +4,23 @@
 BASE_URL = ""
 [config]
 systemName = "DevDependencies system name";
-env_type="dev"
 
 [[test]]
 // 测试环境
 [api]
 BASE_URL = "http://xxx.test.pro.com"
-BASE_API_CONFIG = "./ambiences.config.json"
 [config]
 // 系统名称
 systemName = "Test system name";
 env_type="test"
+BASE_API_CONFIG = "./ambiences.config.json"
 
 [[production]]
 // 正式环境
 [api]
 BASE_URL = "http://xxx.api.pro.com";
-BASE_API_CONFIG = "./ambiences.config.json"
 [config]
 // 系统名称
 systemName = "Production system name";
 env_type="production"
+BASE_API_CONFIG = "./ambiences.config.json"

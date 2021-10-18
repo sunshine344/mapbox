@@ -4,11 +4,12 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2020-02-19 16:24:08
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-16 19:36:41
+ * @LastEditTime : 2021-10-18 10:22:07
  */
 export interface UserState {
     user: AnyObject,
-    collapseState: boolean
+    collapseState: boolean,
+    [key: string]: any
 }
 
 export interface UserActions {

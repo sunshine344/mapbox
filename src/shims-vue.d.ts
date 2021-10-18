@@ -4,14 +4,14 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-16 19:09:10
+ * @LastEditTime : 2021-10-18 18:11:06
  */
 declare module "*.vue" {
 	import Vue from "vue";
 	export default Vue;
 }
 
-declare module "@/amb" {
+declare module "@config/amb" {
 	export const api: AnyObject;
 	export const config: AnyObject;
 	export const ENV: string;

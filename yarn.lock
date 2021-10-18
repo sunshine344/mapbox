@@ -1519,7 +1519,7 @@
     "@vue/compiler-dom" "3.2.19"
     "@vue/shared" "3.2.19"
 
-"@vue/devtools-api@^6.0.0-beta.11", "@vue/devtools-api@^6.0.0-beta.14":
+"@vue/devtools-api@^6.0.0-beta.14":
   version "6.0.0-beta.18"
   resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.0.0-beta.18.tgz#84c0aff9289a57294cb97490811f69e8a0a67f8a"
   integrity sha512-56vRhO7nXWWFYTx520BQSDlQH5VYpwy62hFDEqi2yHHEBpEqseOP5WYQusq7BEW3DXSY9E9cfPVR5CFtJbKuMg==
@@ -1612,10 +1612,10 @@ agent-base@6:
   dependencies:
     debug "4"
 
-ambiences@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/ambiences/-/ambiences-1.0.6.tgz#874c27fd0cdef6f0863bfe1b6719c958d7c5d3e2"
-  integrity sha512-SLtuk1ULnbSC/RxyyPGtk3LdNfMnHWSX7n5dC+tJLtc4MR/wiijSbvgG0xtPW5/k4bAPg6SOZrydKrWo78zkHg==
+ambiences@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/ambiences/-/ambiences-1.1.5.tgz#c8a1a3a55a2f377cfaf2cdfc552b5940c0cecd84"
+  integrity sha512-28FjydgVumT4PE/MxevBe4ym8FJMelf5MNkFyfscYx5nMeNLN9yhu/jZJPHz3Lf9vT7SAgk42mZ0CqYRjiBPLA==
 
 ansi-escapes@^4.2.1:
   version "4.3.2"
@@ -5659,13 +5659,6 @@ vue@^3.2.6:
     "@vue/runtime-dom" "3.2.19"
     "@vue/server-renderer" "3.2.19"
     "@vue/shared" "3.2.19"
-
-vuex@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/vuex/-/vuex-4.0.2.tgz#f896dbd5bf2a0e963f00c67e9b610de749ccacc9"
-  integrity sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==
-  dependencies:
-    "@vue/devtools-api" "^6.0.0-beta.11"
 
 w3c-hr-time@^1.0.2:
   version "1.0.2"

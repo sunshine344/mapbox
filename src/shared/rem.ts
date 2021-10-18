@@ -4,13 +4,8 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 16:01:57
  * @LastEditors  : Pat
- * @LastEditTime : 2021-09-24 11:21:23
+ * @LastEditTime : 2021-10-18 15:10:03
  */
-import request from "igu/lib/core/request";
-export async function requestConfig() {
-    await request('get', '', {});
-}
-
 export default function requestRem(defineWidth: number = 1920) {
     (function (win, doc, dWidth) {
         if (!win.addEventListener) return;

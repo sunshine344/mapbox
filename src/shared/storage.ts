@@ -4,9 +4,9 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2020-12-15 11:47:20
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-14 16:59:24
+ * @LastEditTime : 2021-10-18 18:12:23
  */
-import { config } from "@/amb";
+import { config } from "@config/amb";
 import { isArray, isObject, isString } from "igu/lib/core/basic";
 import { objectEach } from "igu/lib/core/utils";
 export declare interface StorageOption {

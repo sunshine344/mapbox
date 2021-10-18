@@ -4,10 +4,11 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-18 13:45:36
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-15 14:39:26
+ * @LastEditTime : 2021-10-18 18:46:13
  */
 // import Route from "@router";
-import { config, api } from "@/amb";
+import { config } from "@config/amb";
+import { actions, state } from "@store";
 import { getsub, removeSub } from "@shared/storage";
 import request, { useRequest, useResponse, useConfig, AxiosRequestConfig, AxiosResponse } from "igu/lib/core/request";
 
@@ -33,21 +34,24 @@ useRequest(({ url, method, ...requestConfig }: AxiosRequestConfig) => {
 });
 
 useResponse((res: AxiosResponse<any>) => {
-    let { code } = res.data;
-    if (code == 302 || code == 401) {
+    let { code } = res?.data || {};
+    if (code && (code == 302 || code == 401)) {
         removeSub(["token", "userInfo", "menu", "iportalMenu"])
         // Route.push("/login");
     };
     return res
 });
 
-let resApi: AnyObject = api;
-if (api?.BASE_API_CONFIG) {
-    request.get('post', api?.BASE_API_CONFIG).then((res: AnyObject) => {
-        resApi = res;
-    })
-}
+if (config?.BASE_API_CONFIG) {
+    localStorage.removeItem("--APP-STORAGE--");
+    request('get', config?.BASE_API_CONFIG).then(({ api, config }: AnyObject) => {
+        actions.setSysConfig({
+            api,
+            config
+        });
+    });
+};
 
-export const src = resApi;
+export const src = state.sysConfig.api;
 
 export default request;

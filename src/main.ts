@@ -4,11 +4,11 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-15 15:11:34
+ * @LastEditTime : 2021-10-18 18:13:01
  */
 import App from './App';
 import { createApp } from 'vue'
-import { config, ENV } from "@/amb";
+import { config, ENV } from "@config/amb";
 import { setRoute } from '@router';
 import requestRem from "@shared/rem";
 import { setTitle } from "igu/lib/core/utils";
