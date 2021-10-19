@@ -1612,10 +1612,10 @@ agent-base@6:
   dependencies:
     debug "4"
 
-ambiences@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/ambiences/-/ambiences-1.1.5.tgz#c8a1a3a55a2f377cfaf2cdfc552b5940c0cecd84"
-  integrity sha512-28FjydgVumT4PE/MxevBe4ym8FJMelf5MNkFyfscYx5nMeNLN9yhu/jZJPHz3Lf9vT7SAgk42mZ0CqYRjiBPLA==
+ambiences@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/ambiences/-/ambiences-1.1.6.tgz#9fc0ab11d2d306e6bf4fced0b3b198b846830d5d"
+  integrity sha512-+w15TO5t1ezeVqDaFs4ZdVsHrTkBwisFBQxpcLv1zEdCakx7rH/kxxdf7YjcEPbWgoMhhXwU5lRjKQSNmPBo1g==
 
 ansi-escapes@^4.2.1:
   version "4.3.2"
