@@ -1,19 +1,19 @@
 # 使用最新的长期维护版本node作为基础镜像
 FROM node
 
-# 工作目录
-WORKDIR /
+# # 工作目录
+# WORKDIR /
 
-COPY . .
+# COPY . .
 
-ADD package.json .
+# ADD package.json .
 
-# 存在package-lock.json时启用
-ADD package-lock.json .
+# # 存在package-lock.json时启用
+# ADD package-lock.json .
 
-RUN npm install
+# RUN npm install
 
-RUN npm run build:production
+# RUN npm run build:production
 
 COPY dist/dist/ambiences.config.json /usr/share/config/ambiences.config.json
 
