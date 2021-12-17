@@ -4,14 +4,26 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-18 14:14:55
  * @LastEditors  : Pat
- * @LastEditTime : 2021-09-26 16:43:46
+ * @LastEditTime : 2021-12-17 10:51:00
  */
-import request, { src } from "../config/request";
+import request, { requestApi, errorCatch, src } from "../config/request";
+// 用户登陆信息类型
+export interface userState {
+    userName: string,
+    password: string
+}
 /**
  * @description: 用户登录接口
  * @param {params} params {USER_LOGIN_NAME USER_PASSWORD}
- * @return: USER_INFO
+ * @return {Promise<AnyObject>}
  * @Date: 2020-07-31 14:54:01
  * @author: Pat
  */
-export const Login = async (params: any) => await request('post', `${src.BASE_URL}/login/submit`, params);
+export const Login = (params: userState): Promise<AnyObject> => new Promise((resolve, reject) => {
+    requestApi((api: AnyObject) => request.json(`${api.BASE_URL}/user/login`, params).then((res: AnyObject) => {
+        resolve(res);
+    }).catch((error: AnyObject) => {
+        reject(error)
+        errorCatch(error)
+    }))
+})

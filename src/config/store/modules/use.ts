@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-10-15 15:35:30
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-16 19:18:28
+ * @LastEditTime : 2021-12-17 10:48:52
  */
 // import { createStore, IStore } from "../core";
 
@@ -31,6 +31,5 @@ const updateUser = (iState: IState, user: AnyObject) => {
 
 export default {
     state,
-    actions: { updateToken, updateUser },
-    test: '123123123'
+    actions: { updateToken, updateUser }
 };

@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-18 18:11:06
+ * @LastEditTime : 2021-12-17 10:47:25
  */
 declare module "*.vue" {
 	import Vue from "vue";
@@ -73,10 +73,13 @@ declare module "@router" {
 	export const setRoute: Function;
 	export default route;
 }
+
+
 declare module "@store" {
 	const store: any;
 	export const actions: AnyObject;
 	export const state: AnyObject;
+	export const outputStore: (key: string, key0?: string | string[]) => any;
 	export default store;
 }
 
@@ -101,6 +104,11 @@ interface RequestObject {
 	data: AnyObject,
 	msg: string,
 	code: number
+}
+
+declare module "@config/message" {
+	export const outputMessage: (arg: string, arg1?: string) => any
+	export const Message: AnyObject;
 }
 
 declare module "@config/type/global" {

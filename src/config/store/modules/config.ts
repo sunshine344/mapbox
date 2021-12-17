@@ -4,11 +4,12 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2020-02-19 16:24:08
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-18 18:33:46
+ * @LastEditTime : 2021-12-17 10:44:17
  */
 import { config, api } from "@config/amb";
+import { objectEach } from "igu/lib/core/utils";
 
-export interface SysState {
+export interface ConfigState {
     base: AnyObject,
     api: AnyObject,
 }
@@ -16,25 +17,26 @@ export interface SysState {
 export interface SysActions {
     setBase: Function,
     setApi: Function,
-    setSysConfig: Function,
+    setConfig: Function,
 }
 
 
-const state: SysState = {
+const state: ConfigState = {
     base: config,
     api
 }
 
 const actions: SysActions = {
-    setBase: (iState: SysState, config: AnyObject) => {
+    setBase: (iState: ConfigState, config: AnyObject) => {
         iState.base = config;
     },
-    setApi: (iState: SysState, api: AnyObject) => {
+    setApi: (iState: ConfigState, api: AnyObject) => {
         iState.api = api;
     },
-    setSysConfig: (iState: SysState, { base, api }: SysState) => {
-        iState.base = base;
-        iState.api = api;
+    setConfig: (iState: AnyObject, config: ConfigState) => {
+        objectEach(config, (item: AnyObject, key: string) => {
+            iState[key] = item;
+        });
     },
 };
 

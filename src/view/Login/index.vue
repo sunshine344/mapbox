@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-18 15:30:56
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-16 20:12:50
+ * @LastEditTime : 2021-12-17 10:40:12
 -->
 <template>
 	<div class="login">
@@ -17,12 +17,14 @@
 				<div class="ruleForm">
 					<input
 						type="text"
+						class="input"
 						placeholder="请输入用户名"
 						v-model="ues.username"
 						@keyup="enterKeys"
 					/>
 					<input
 						type="password"
+						class="input last-child"
 						placeholder="请输入密码"
 						v-model="ues.password"
 						@keyup="enterKeys"
@@ -33,6 +35,9 @@
 			<ul>
 				<li v-for="(item, i) in list" :key="i"></li>
 			</ul>
+			<div class="sphere">
+				<div class="ring" :class="`ring_${i}`" v-for="(item, i) in list" :key="i"></div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -41,7 +46,7 @@
 </style>
 <script lang="ts">
 import { defineComponent, reactive, ref, withKeys } from "vue";
-import {Login} from "@api/core/use";
+import { Login } from "@api/core/use";
 import Message from "@components/Message";
 import { useRouter } from "vue-router";
 import { actions } from "@store";

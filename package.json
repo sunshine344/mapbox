@@ -12,7 +12,7 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "igu": "^1.1.5",
+    "igu": "^1.1.7",
     "sass": "^1.41.1",
     "vue": "^3.2.6",
     "vue-router": "^4.0.11"

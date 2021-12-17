@@ -4,13 +4,16 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-18 13:45:36
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-18 18:46:13
+ * @LastEditTime : 2021-12-17 10:48:26
  */
 // import Route from "@router";
 import { config } from "@config/amb";
 import { actions, state } from "@store";
 import { getsub, removeSub } from "@shared/storage";
 import request, { useRequest, useResponse, useConfig, AxiosRequestConfig, AxiosResponse } from "igu/lib/core/request";
+import { ref } from "vue";
+import Message from "@components/Message";
+import { outputMessage } from "@config/message";
 
 useConfig({
     defaults: {
@@ -42,16 +45,36 @@ useResponse((res: AxiosResponse<any>) => {
     return res
 });
 
-if (config?.BASE_API_CONFIG) {
-    localStorage.removeItem("--APP-STORAGE--");
-    request('get', config?.BASE_API_CONFIG).then(({ api, config }: AnyObject) => {
-        actions.setSysConfig({
-            api,
-            config
-        });
-    });
+
+
+export const src = ref(state.config.api);
+
+export const requestApi = (callback: Function = (api: AnyObject) => api) => {
+    try {
+        if (config?.BASE_API_CONFIG) {
+            request.get(config?.BASE_API_CONFIG).then(({ api, base, map }: AnyObject) => {
+                actions.setSysConfig({ api, base, map });
+                src.value = api;
+                callback(api)
+            }).catch(() => { });
+        } else {
+            callback(src.value);
+        };
+    } catch (error) { };
 };
 
-export const src = state.sysConfig.api;
+export const errorCatch = ({ response }: AnyObject) => {
+    if (response) {
+        const { data, status } = response;
+        if (status === 500) {
+            Message.error("服务器错误！");
+        } else if (data?.errorCode || data?.message) {
+            const msg: string = outputMessage(data?.message);
+            Message.error(msg ? msg : data.message);
+        } else {
+            Message.error("服务器请求失败，接口不存在！");
+        }
+    }
+};
 
 export default request;

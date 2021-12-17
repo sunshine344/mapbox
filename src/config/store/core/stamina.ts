@@ -4,20 +4,20 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-10-15 15:06:27
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-16 20:32:41
+ * @LastEditTime : 2021-11-19 14:27:35
  */
+import { setup, getsub } from '@shared/storage';
 import { watch, toRaw, readonly, reactive } from 'vue';
-const STORAGE_KEY = '--APP-STORAGE--'
-function setItem(key: string, state: any) {
-    const stateRow = getItem()
-    stateRow[key] = state
-    const stateStr = JSON.stringify(stateRow)
-    localStorage.setItem(STORAGE_KEY, stateStr)
+import { APP_CONFIG_STORE_NAME } from "../../enum";
+
+const setItem = (key: string, state: any) => {
+    const stateRow = getsub(APP_CONFIG_STORE_NAME) || {};
+    stateRow[key] = state;
+    setup(APP_CONFIG_STORE_NAME, stateRow);
 };
-function getItem(key?: string) {
-    const stateStr = localStorage.getItem(STORAGE_KEY) || '{}'
-    const stateRow = JSON.parse(stateStr) || {}
-    return key ? stateRow[key] || {} : stateRow
+const getItem = (key?: string) => {
+    const stateRow = getsub(APP_CONFIG_STORE_NAME);
+    return (key ? stateRow[key] : stateRow) || {};
 };
 /**
  * @description: Create long storage space
@@ -30,6 +30,6 @@ function getItem(key?: string) {
  */
 export function createPersistStorage<T>(state: any, key: string | undefined = 'default', isModel: boolean = false): T {
     Object.entries(getItem(key)).forEach(([key, value]) => (state[key] = value));
-    watch(state, () => setItem(key, toRaw(state)));
+    watch(state, () => setItem(key, toRaw(state) || state));
     return isModel ? reactive(state) : readonly(state)
-}
+};

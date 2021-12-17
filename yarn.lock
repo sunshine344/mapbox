@@ -3125,10 +3125,10 @@ iconv-lite@0.4.24:
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
-igu@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/igu/-/igu-1.1.5.tgz#1cdc460baf22f689d7ac344fb02454509b5d3019"
-  integrity sha512-JH9CyIRLXqUwmNZKniuz0R92zneW+VUOCKgj3LolAU2vbI7cPRnCDT00LBWA+vYQaWj8l2tzs6pfHqcq+ptUoQ==
+igu@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/igu/-/igu-1.1.7.tgz#d80eaf483983c8e556674c425a8e99d463e94ca9"
+  integrity sha512-uORUvSyqexmCD/FtCNo2TyWDia1+GVaPLH5k/aDp9QI0zu4bStx3a8z2VlKltdcwZz34FSPJlSxBoVglwhfrNA==
   dependencies:
     axios "^0.21.1"
 

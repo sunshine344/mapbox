@@ -4,15 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-10-18 10:57:51
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-18 10:57:55
- */
-/*
- * @Autor        : Pat
- * @Description  :
- * @Email        : gouqingping@yahoo.com
- * @Date         : 2021-10-15 15:18:27
- * @LastEditors  : Pat
- * @LastEditTime : 2021-10-16 20:29:02
+ * @LastEditTime : 2021-11-08 15:50:46
  */
 import { reactive, readonly } from 'vue';
 import { createPersistStorage } from "./stamina";
@@ -69,7 +61,7 @@ export function createStore<IState = AnyObject>(optons: IStore): IStore {
         Object.keys(modules).forEach((key: string) => {
             const currentStore: IStore = modules[key];
             if (currentStore) {
-                store.state[key] = createPersistStorage<IState>(createState(currentStore.state as IStore), "default", true);
+                store.state[key] = createPersistStorage<IState>(createState(currentStore.state as IStore), key, true);
                 // // store.actions.test.updateToken("asdasdasdasd")
                 // store.actions[key] = updateAction(store.state[key], currentStore.actions);
 
