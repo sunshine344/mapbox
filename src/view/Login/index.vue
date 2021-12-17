@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-18 15:30:56
  * @LastEditors  : Pat
- * @LastEditTime : 2021-12-17 10:40:12
+ * @LastEditTime : 2021-12-17 16:59:10
 -->
 <template>
 	<div class="login">
@@ -20,14 +20,14 @@
 						class="input"
 						placeholder="请输入用户名"
 						v-model="ues.username"
-						@keyup="enterKeys"
+						@keyup.enter="iLogin"
 					/>
 					<input
 						type="password"
 						class="input last-child"
 						placeholder="请输入密码"
 						v-model="ues.password"
-						@keyup="enterKeys"
+						@keyup.enter="iLogin"
 					/>
 					<button class="Login" @click="iLogin">登陆</button>
 				</div>
@@ -49,29 +49,31 @@ import { defineComponent, reactive, ref, withKeys } from "vue";
 import { Login } from "@api/core/use";
 import Message from "@components/Message";
 import { useRouter } from "vue-router";
-import { actions } from "@store";
+import { actions, clearState } from "@store";
 
 const ues = reactive({
 	username: "",
 	password: "",
 });
 const route = ref();
-const getValue = (obj: any, value: any) =>
-	obj.value && obj.value[value] && obj.value[value];
-const enterKeys = () => withKeys(() => iLogin(), ["enter", "native"]);
+const getValue = (obj: any, value: any) => obj.value && obj.value[value] && obj.value[value];
 
 async function iLogin() {
 	if (!verification()) {
 		Message.error("请输入用户名/密码");
 		return;
 	}
-	const { code, msg, data } = await Login(ues);
-	if (code === 200) {
-		actions.updateUser(data);
-		actions.updateToken(data.token);
-		getValue(route, "push")("/home");
-	}
-	Message[code === 200 ? "success" : "error"](msg);
+	Login(ues).then(({ code, msg, data }: AnyObject) => {
+		if (code === 200) {
+			actions.updateUser(data);
+			actions.updateToken(data.token);
+			getValue(route, "push")("/home");
+		};
+		Message[code === 200 ? "success" : "error"](msg);
+	}).catch((error: AnyObject) => {
+		console.log(error)
+		Message.error("登陆失败！");
+	})
 }
 
 function verification() {
@@ -82,11 +84,10 @@ function verification() {
 export default defineComponent({
 	setup() {
 		route.value = useRouter();
-		localStorage.removeItem("--APP-STORAGE--");
+		clearState();
 		return {
 			list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 			ues,
-			enterKeys,
 			iLogin,
 		};
 	},

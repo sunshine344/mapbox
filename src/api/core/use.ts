@@ -4,9 +4,9 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-18 14:14:55
  * @LastEditors  : Pat
- * @LastEditTime : 2021-12-17 10:51:00
+ * @LastEditTime : 2021-12-17 14:19:27
  */
-import request, { requestApi, errorCatch, src } from "../config/request";
+import request, { errorCatch, src } from "../config/request";
 // 用户登陆信息类型
 export interface userState {
     userName: string,
@@ -20,10 +20,10 @@ export interface userState {
  * @author: Pat
  */
 export const Login = (params: userState): Promise<AnyObject> => new Promise((resolve, reject) => {
-    requestApi((api: AnyObject) => request.json(`${api.BASE_URL}/user/login`, params).then((res: AnyObject) => {
+    request.json(`${src.value.BASE_URL}/user/login`, params).then((res: AnyObject) => {
         resolve(res);
     }).catch((error: AnyObject) => {
         reject(error)
         errorCatch(error)
-    }))
+    })
 })

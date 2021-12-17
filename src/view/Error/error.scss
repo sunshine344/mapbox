@@ -7,7 +7,7 @@
     align-items: center;
     position: relative;
     overflow: hidden;
-    --defaultColor: red;
+    // --defaultColor: var(errorFontColor);
     --comFontColor: #f90;
     background: linear-gradient(to bottom right, rgb(0, 21, 42), var(--defaultColor));
 

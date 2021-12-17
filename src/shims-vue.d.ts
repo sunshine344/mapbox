@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2021-12-17 10:47:25
+ * @LastEditTime : 2021-12-17 14:24:47
  */
 declare module "*.vue" {
 	import Vue from "vue";
@@ -22,12 +22,6 @@ declare module "@components/*" {
 	const components: any;
 	export default components;
 }
-
-
-// declare module "*" {
-// 	const file: any;
-// 	export default file;
-// }
 
 // declare module all files type
 // Prevent errors during development
@@ -57,6 +51,14 @@ declare module "@api/core/use" {
 	export const Login: Function;
 }
 
+declare module "@api/config/request" {
+	export const src: AnyObject;
+	export const requestApi: (callback?: Function) => void;
+	export const errorCatch: (error: AnyObject) => void;
+	const request: AnyObject;
+	export default request;
+}
+
 declare module "@router/core/*" {
 	const routercore: any;
 	export default routercore;
@@ -80,6 +82,7 @@ declare module "@store" {
 	export const actions: AnyObject;
 	export const state: AnyObject;
 	export const outputStore: (key: string, key0?: string | string[]) => any;
+	export const clearState: (name?: string) => void;
 	export default store;
 }
 

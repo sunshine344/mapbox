@@ -4,15 +4,18 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2020-12-15 11:47:20
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-18 18:12:23
+ * @LastEditTime : 2021-12-17 15:02:44
  */
 import { config } from "@config/amb";
 import { isArray, isObject, isString } from "igu/lib/core/basic";
 import { objectEach } from "igu/lib/core/utils";
+const sysType: string = config?.sysType || "";
+// 缓存时间 always
+const expiresTime = (60 * 1000) * 60 * 12;
 export declare interface StorageOption {
     value: any,
     expires: number | string,
-    startTime: number
+    startTime: number | string
 }
 const Storage = window.localStorage || (globalThis.localStorage);
 /**
@@ -57,7 +60,7 @@ function Case(str: string): string {
  * @Date: 2021-01-27 10:50:34
  * @author: Pat
  */
-export function setup(name: any, params: any, expires: string | number = (60 * 1000) * 60 * 24): any {
+export function setup(name: any, params: any, expires: string | number = expiresTime): any {
     if (isArray(name)) {
         name.forEach((item: any, i: any) => setup(item, params[i], expires));
         return;
@@ -65,25 +68,15 @@ export function setup(name: any, params: any, expires: string | number = (60 * 1
         objectEach(name, (i: any, item: string | number) => setup(item, i, expires));
         return;
     } else if (isString(name)) {
-        name = `${config?.sysType || ''}${name}`;
-        let options: StorageOption = {
+        name = `${sysType}${name}`;
+        Storage.setItem(name, JSON.stringify({
             // Storage option params
             value: params,
             // Expiration time, set to always to save
-            expires: expires,
+            expires,
             // Record when the value is stored in the cache, milliseconds
-            startTime: new Date().getTime()
-        }
-        if (options.expires === "always") {
-            Storage.setItem(name, JSON.stringify(options));
-            return;
-        }
-        if (isType(options.value, "Object")) {
-            options.value = JSON.stringify(options.value);
-        } else if (isType(options.value, "Array")) {
-            options.value = JSON.stringify(options.value);
-        }
-        Storage.setItem(name, options.value);
+            startTime: expires === "always" ? expires : new Date().getTime()
+        }));
     }
 }
 /**
@@ -94,25 +87,23 @@ export function setup(name: any, params: any, expires: string | number = (60 * 1
  * @author: Pat
  */
 export function getsub(name: string): any {
-    name = `${config?.sysType || ''}${name}`;
+    name = `${sysType || ''}${name}`;
     let item: string | null | any = Storage.getItem(name);
-    if (isJSON(item)) {
-        item = JSON.parse(item);
-    }
+    if (isJSON(item)) item = JSON.parse(item);
     if (item) {
         // has the value of startTime
         // set expiration time
-        if (item.startTime) {
-            let date: number = new Date().getTime();
+        if (item.startTime != "always") {
+            const date: number = new Date().getTime();
             // invalidate clear cache false
-            if (date - item.startTime > item.expires) {
+            if (isNaN(item.expires) || (date - item.startTime > (item?.expires || 0))) {
                 removeSub(name);
                 return false;
             }
-            return item.value;
+            return item?.value || item;
         }
         // No expiration time is set, return directly
-        return item;
+        return item?.value || item;
     }
     return false;
 }
@@ -125,8 +116,12 @@ export function getsub(name: string): any {
  */
 export function removeSub(...name: any): any {
     if (!name) { clear(); return; };
-    !Array.isArray(name) && Storage.removeItem(name.includes(`${config?.sysType || ''}`) ? name : `${config?.sysType || ''}${name}`);
-    Array.isArray(name) && name.forEach((str: string) => Storage.removeItem(str.includes(`${config?.sysType || ''}`) ? str : `${config?.sysType || ''}${str}`));
+    if (Array.isArray(name)) {
+        name.forEach((str: string) => Storage.removeItem(str))
+    } else {
+        name = `${sysType}${name}`;
+        Storage.removeItem(name)
+    }
 }
 
 /**

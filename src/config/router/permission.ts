@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-02-30 10:40:45
  * @LastEditors  : Pat
- * @LastEditTime : 2021-12-17 11:43:39
+ * @LastEditTime : 2021-12-17 15:03:46
  */
 import { setup } from "@shared/storage";
 import { isEqual } from "igu/lib/core/basic";
@@ -85,7 +85,7 @@ export default function ({ beforeEach, addRoute, removeRoute }: AnyObject) {
     // This's vue router beforeEcah routers
     beforeEach(async (to: RouteLocationNormalized, { path: _fromPath }: RouteLocationNormalized, next: NavigationGuardNext) => {
         const user = outputStore('use.user.id');
-        const pageName = outputStore("config.base.systemName");
+        const pageName = outputStore("config.config.systemName");
         const { paths } = outputStore('route');
         // let { code } = getUrlQuery(location.href);
         let { path: _toPath, meta: { name: _toMetaTitle, allowBack, isAuth }, name: _toName, fullPath } = to as AnyObject;

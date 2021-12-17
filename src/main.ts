@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-18 18:13:01
+ * @LastEditTime : 2021-12-17 14:15:47
  */
 import App from './App';
 import { createApp } from 'vue'
@@ -15,7 +15,9 @@ import { setTitle } from "igu/lib/core/utils";
 import '@scss/common.scss';
 import "@components/Message/src/scss/index.scss";
 import { setupProdMockServer } from '../mock/_createProductionServer';
+import { requestApi } from "@api/config/request";
 const app = createApp(App);
+requestApi();
 setRoute(app);
 requestRem(1920);
 config?.moduleName && setTitle(config.moduleName);
@@ -28,7 +30,7 @@ if (ENV === "dev") {
     // Whether to enable Mockjs
     // If the Amb mock parameter is enabled
     // then mock data simulation is enabled
-    if (!config?.mock) {
+    if (config?.mock) {
         setupProdMockServer()
     };
 } else {

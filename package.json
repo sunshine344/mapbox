@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite --host --mode NODE_ENV=dev",
-    "production": "vite --host --mode NODE_ENV=production",
+    "pro": "vite --host --mode NODE_ENV=production",
     "build": "vue-tsc --noEmit && vite build --mode NODE_ENV=production",
     "build:production": "vite build --mode NODE_ENV=production",
     "serve": "vite preview",
@@ -29,7 +29,7 @@
     "@vitejs/plugin-vue": "^1.6.1",
     "@vue/compiler-sfc": "^3.2.6",
     "@vue/test-utils": "^2.0.0-rc.15",
-    "ambiences": "^1.2.1",
+    "ambiences": "^1.2.3",
     "babel-jest": "^26.6.3",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "jest": "^26.6.3",

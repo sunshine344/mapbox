@@ -1,13 +1,14 @@
 
         
-interface AnyObject { [key: string]: any }
-
-export const ENV:string = "dev";
-export const api:AnyObject = {
-     "BASE_URL": "",
+export const ENV = "production";
+export const api = {
+     "BASE_URL":"",
 };
-export const config:AnyObject = {
-     "systemName": "DevDependencies system name",
+export const config = {
+     // 系统名称,
+     "systemName":"Productionsystemname",
+     "env_type":"production",
+     "BASE_API_CONFIG":"./ambiences.config.json",
 };
         
 export default {ENV,api,config}

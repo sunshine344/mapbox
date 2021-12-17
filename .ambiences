@@ -3,6 +3,7 @@
 [api]
 BASE_URL = ""
 [config]
+mock=true
 systemName = "DevDependencies system name";
 
 [[test]]
