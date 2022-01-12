@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2021-12-17 14:15:47
+ * @LastEditTime : 2022-01-06 13:59:19
  */
 import App from './App';
 import { createApp } from 'vue'
@@ -30,7 +30,7 @@ if (ENV === "dev") {
     // Whether to enable Mockjs
     // If the Amb mock parameter is enabled
     // then mock data simulation is enabled
-    if (config?.mock) {
+    if (config?.mock || !config?.mock) {
         setupProdMockServer()
     };
 } else {
