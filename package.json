@@ -12,6 +12,7 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "@elgis/map": "^1.0.1",
     "igu": "^1.1.7",
     "sass": "^1.41.1",
     "vue": "^3.2.6",

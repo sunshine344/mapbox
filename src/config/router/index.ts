@@ -4,12 +4,12 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2020-02-19 15:31:14
  * @LastEditors  : Pat
- * @LastEditTime : 2021-09-18 15:17:46
+ * @LastEditTime : 2022-03-14 10:03:01
  */
 import type { App } from 'vue';
 import routerBeforeEach from "./permission";
 import constantRoutes from "./core/constantRoutes";
-import { createRouter, createWebHashHistory, RouteRecordRaw, RouteLocationNormalized } from 'vue-router';
+import { createRouter, createWebHashHistory, RouteRecordRaw, RouteLocationNormalized, RouteLocationRaw } from 'vue-router';
 const router = createRouter({
 	history: createWebHashHistory(),//createWebHashHistory or createWebHistory,
 	routes: [...constantRoutes] as RouteRecordRaw[],
@@ -32,6 +32,12 @@ const router = createRouter({
 		return { left: 0, top: 0, behavior };
 	}
 });
+
+const originalPush = router.push
+router.push = function push(location: RouteLocationRaw) {
+	return originalPush.call(this, location);
+}
+
 routerBeforeEach(router);
 export const setRoute = (app: App<Element>) => {
 	app.use(router);

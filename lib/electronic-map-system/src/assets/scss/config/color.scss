@@ -1,0 +1,97 @@
+@charset 'utf-8';
+
+:root {
+     // 页面主题背景色
+    --themedefaultColor:#072B67;
+    // 切换辅助字体色
+    --auxThemeColor:#0d4b89;
+    --fontFamily: "Arial";
+    // Page color 
+    // 主色调
+    --defaultColor: #05285E;
+    // 常规辅助色
+    --auxColor705: #eba705;
+    --auxColorf0f: #fbcf0f;
+    --auxColor621: #cc8621;
+    --auxColore6f: #005ebf;
+    --auxColorf58: #003f58;
+    --auxColoraff: #00eaff;
+    --auxColorfff: #ffffff;
+    // 背景颜色
+    --backgroundcolor:rgba(15, 82, 166, 0.4);
+    // 主体字体色
+    --defaultFontColored4: #ccced4;
+    //选中字体色
+    --fontColorfff: #fff;
+    // 辅助字体色（不可点击文字）
+    --auxFontColor3ff: #00b3ff;
+    // 未选中边框颜色
+    --borderColor:#0C4881;
+    // 边框透明背景色
+    --backgroundColor:rgba(13,49,96,0.8);;
+    // 选中边框颜色
+    --activeborderColor:rgba(251, 207, 15, 1);
+    --activeBackgroundColor:rgba(235, 167, 5, 0.4);
+    // 鼠标移入颜色
+    --hoverBackground:#053f94;
+    // 鼠标点击颜色
+    --activeBackground:#eba705;
+    // 高级查询的字体颜色
+    --expert:#00B4FF;
+    // 页面背景色
+    --pageBackground:rgba(18, 92, 163, 0.4);
+    // 渐变色按钮背景
+    --btnLinear:linear-gradient(180deg, #103A78 0%, #042243 100%);
+    // 功能区背景图
+    --subareaBackground: url('@/assets/images/rectangle2.png') no-repeat;
+    // 用户背景
+    --userBackground:url('@/assets/images/rectangle2.png') no-repeat;
+    // 工具背景
+    --toolBackground:url('@/assets/images/border.png') no-repeat;
+    // 侧边导航背景 默认
+    --menuNormal:url('@/assets/images/normal.png') no-repeat;
+    // 侧边导航选中
+    --menuChecked:url('@/assets/images/checked.png') no-repeat;
+    --menuHover:url('@/assets/images/hover.png') no-repeat;
+    // 地图工具背景
+    --mapToolBackground:url('@/assets/images/rectangle.png') no-repeat;
+    // 小工具背景图
+    --toolBarBackground:url('@/assets/images/border.png') no-repeat;
+    // 样式切换背景
+    --styleChangeBackground:transparent;
+    // logo背景图
+    --logoBackground:url('@/assets/images/logo.png') no-repeat;
+    // 测量下拉背景框
+    --makerBackground:url('@/assets/images/maker.png') no-repeat;
+    // // 补充辅助字体色 (提示文字)
+    // --comFontColor: #bfbfbf;
+    // // 标题文字用色
+    // --titleFontColor: #262626;
+    // // 警告、必填提示文字色
+    // --errorFontColor: #f5222d;
+    // // 输入框、分割线颜色
+    // --borderColor: #d9d9d9;
+
+   
+    // --defaultBackgroundColor: #072B67;
+    // // 导航栏字体色
+    // --headerFontColor: #333333;
+    // // 横导航栏背景色
+    // --headerBgColor: #7f65b2;
+    // // 横导航栏背景色
+    // --auxHeaderBgColor: #409eff;
+    // // 竖导航背景色
+    // --navBackgroundColor: #2b2b2b;
+    // // 竖导选中文字景色
+    // --activeFontColor: #ffffff;
+    // // 导航选中背景色
+    // --activeNavBackgroundColor: rgba(0, 0, 0, 0.2);
+    // // 菜单文字颜色
+    // --meunTextColor: white;
+    // // hover
+    // --hover: var(--defaultColor);
+    // //边框
+    // --border: #d9d9d9;
+    // //提示
+    // --tip: #bfbfbf;
+}

@@ -1,0 +1,73 @@
+@import '../../assets/scss/config/color.scss';
+@import '../../assets/scss/config/commonStyle.scss';
+@import '../../assets/scss/config/font.scss';
+@import '../../assets/scss/config/size.scss';
+
+.login {
+    width: 100%;
+    height: 100%;
+    background: url(./src/images/back.png);
+    position: relative;
+
+    .logo {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+    }
+
+    .loginbox {
+        text-align: center;
+        width: 440px;
+        height: 300px;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        margin-left: -220px;
+
+        h2 {
+            font-size: 30px;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: #FFFFFF;
+            line-height: 42px;
+            letter-spacing: 1px;
+        }
+
+        .loginFrom {
+
+            .ant-form-item-control-input-content>.ant-input,
+            .ant-input-password {
+                width: 432px;
+                color: #fff;
+                height: 42px;
+                background: rgba(15, 82, 166, 0.3);
+                opacity: 0.6;
+                border: 1px solid #0D62C0;
+                font-size: 16px;
+                margin-top: 30px;
+            }
+
+            .ant-input-password>.ant-input {
+                background: transparent;
+                color: #fff;
+                font-size: 16px;
+            }
+
+            .ant-input-password-icon {
+                color: #fff;
+            }
+
+            .ant-form-item-explain-error {
+                text-align: left;
+            }
+
+            .ant-btn {
+                width: 432px;
+                height: 42px;
+                background: #0562FB;
+                border: none;
+                margin-top: 30px;
+            }
+        }
+    }
+}

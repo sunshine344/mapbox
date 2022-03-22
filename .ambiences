@@ -6,16 +6,6 @@ BASE_URL = ""
 mock=true
 systemName = "DevDependencies system name";
 
-[[test]]
-// 测试环境
-[api]
-BASE_URL = "http://xxx.test.pro.com"
-[config]
-// 系统名称
-systemName = "Test system name";
-env_type="test"
-BASE_API_CONFIG = "./ambiences.config.json"
-
 [[production]]
 // 正式环境
 [api]

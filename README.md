@@ -1,16 +1,16 @@
-<!--
- * @Autor        : Pat
- * @Description  : 
- * @Email        : gouqingping@yahoo.com
- * @Date         : 2021-09-17 15:08:43
- * @LastEditors  : Pat
- * @LastEditTime : 2021-10-15 14:27:49
--->
-# EModel for Vue
-Vue 3.0 + vite + ts
-+ 根据配置生成环境与页面配置
-+ `postcss` + `scss` 处理样式统一
-+ 统一配置文件管理
+# Eli for front end cli
+
+2022年易利数科产品二部前端开发脚手架模板 
+
++ Vue3.x + vite2.x + ECMAScript6 + TypeScript 
++ 遗弃Vuex，使用Vue3 readonly、 reactive 代替 
++ Jenkins 自动化集成 
++ Docker 前端自动化部署 
++ Postcss + sass + style var 样式配置统一管理 
++ Jest 单元测试，减少代码BUG率
++ 根据配置文件生成多环境、页面配置，打包后自动生成配置文件json 
++ Mockjs 前后端分离前端数据模拟
+
 
 ## 初始化
 ```node
@@ -33,11 +33,18 @@ npm run build
 yarn build
 ```
 
+## 单元测试
+```node
+npm run test 
+// or
+yarn test
+```
+
 ## 环境配置
 [ambiences]:https://www.npmjs.com/package/ambiences
 环境配置采用 [ambiences][ambiences] 多环境webpck\vite plugins配置生成当前环境配置（解决多余IP暴露引起的安全性问题）。
 
-然后在打包配置文件(`vite.config.js`) 内 `plugins` 添加 `ambiences(build_file_type, build_file_name)`;
+在打包配置文件(`vite.config.js`) 内 `plugins` 添加 `ambiences(build_file_type, build_file_name)`;
 
 
 ### .ambiences 配置示例
@@ -65,6 +72,20 @@ requestURL = "http://xxx.api.pro.com"
 // 系统名称
 systemName = "Production system name";
 ```
+
+### package.json 示例 
+
+```json
+{
+    "scripts": {
+        "dev": "vite --host --mode NODE_ENV=dev",
+        "pro": "vite --host --mode NODE_ENV=production",
+        "build": "vue-tsc --noEmit && vite build --mode NODE_ENV=production",
+        "build:pro": "vite build --mode NODE_ENV=production",
+    } 
+} 
+```
+
 
 ## Mock
 在开发环境下 `mock` 应该为启用。
@@ -133,6 +154,7 @@ export default [
 
 ## Store
 `src/config/store` 系统状态存储机配置。只需要在`src/config/store/modules` 文件夹下添加对应的模块名称命名的`.(t|j)s`文件和对应配置即可，如：
+// page.ts
 ```typescript
 const state = {
     user: {},
@@ -170,6 +192,11 @@ export default {
 }
 ```
 
+```js
+import { outputStore } from "@store";
+console.log(outputStore('page.user'))
+```
+
 ## dependencies
 
 [igu]:https://www.npmjs.com/package/igu
@@ -181,9 +208,6 @@ export default {
 [vue]:https://v3.cn.vuejs.org/
 [vue] 开发基础框架
 
-[vuex]:https://next.vuex.vuejs.org/
-[vuex] 基础框架状态管理器
-
 [vue-router]:https://next.router.vuejs.org/zh/
 [vue-router] 基础框架路由
 
@@ -191,8 +215,6 @@ export default {
 ```
 |--- __test__ 单元测试目录
     |--- xxx.text.(ts|js) 功能测试文件
-|--- amb (p.fs.amb 环境区分系统配置目录)
-|--- api (p.fs.amb 环境区分系统请求配置目录)
 |--- config (vite公共目录)
 |--- mock (数据模拟目录)
     |--- model (各个接口数据模拟配置目录)
@@ -218,14 +240,14 @@ export default {
             |--- permission.ts (路由拦截配置文件)
             |--- index.ts (路由输出文件)
         |--- store (存储机目录)
-            |--- modules (存储机配置目录)
+            |--- core (存储机配置)
+            |--- modules (存储机盒子目录)
             |--- index.ts (存储机输出文件)
         |--- type (类型目录)
-    |--- config (系统配置目录)
-        |--- global.d.ts (公共类型文件)
-    |--- _utlis.ts (创建mock数据工具文件)
+        |--- enum.ts (枚举文件)
+        |--- message.ts (消息管理文件)
+        |--- validate.ts (表单验证文件)
     |--- containers (自定义业务组件目录)
-    |--- init (p.fs.amb生成配置目录)
     |--- shared (自定义工具目录)
         |--- _utlis.ts (公共工具文件)
         |--- rem.ts (main初始化工具文件)
@@ -234,11 +256,15 @@ export default {
     |--- App.ts (引导页面)
     |--- main.ts (打包输出页面)
     |--- env.d.ts (全局类型)
+    |--- shims-vue.d.ts (项目声明)
+|--- .ambiences (环境、页面配置文件)
 |--- .browserslistrc
+|--- .dockerignore (docker排除文件)
 |--- .editorconfig (统一管理编辑器格式)
+|--- Dockerfile (docker配置文件)
+|--- Jenkinsfile.groovy (Jenkins配置文件)
 |--- .gitignore (统一管理排除提交文件)
 |--- index.html (引导HTMML)
-|--- shims-vue.d.ts (项目声明)
 |--- tsconfig.json (ts配置文件)
 |--- vite.config.js (打包配置文件)
 ```

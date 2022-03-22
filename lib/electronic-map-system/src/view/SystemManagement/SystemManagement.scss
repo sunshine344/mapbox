@@ -1,0 +1,26 @@
+@import '../../assets/scss/config/color.scss';
+@import '../../assets/scss/config/commonStyle.scss';
+@import '../../assets/scss/config/font.scss';
+@import '../../assets/scss/config/size.scss';
+
+.SystemManagementBox{
+    padding: var(--padding20);
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background: url('./src/images/dtbeijing.png');
+    display: flex;
+    pointer-events: auto;
+    .leftNav{
+        width: 240px;
+        height: 100%;
+    }
+    .rightCon{
+        flex: 1;
+        margin-left:var(--padding20);
+        height: 100%;
+        background-color:var(--pageBackground);
+        border: 1px solid var(--pageBackground);
+        box-sizing: border-box;
+    }
+}

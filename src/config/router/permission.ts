@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-02-30 10:40:45
  * @LastEditors  : Pat
- * @LastEditTime : 2021-12-17 15:03:46
+ * @LastEditTime : 2022-03-14 10:03:29
  */
 import { setup } from "@shared/storage";
 import { isEqual } from "igu/lib/core/basic";
@@ -79,7 +79,7 @@ const toLogin: (path: string) => void = (path: string) => {
  * @Date: 2021-03-30 11:02:42
  * @author: Pat
  */
-export default function ({ beforeEach, addRoute, removeRoute }: AnyObject) {
+export default function ({ beforeEach, addRoute, removeRoute, onError }: AnyObject) {
     let home = (asyncRoutes || []).firstOf();
     try { home && addRoute(home) } catch (error) { }
     // This's vue router beforeEcah routers
@@ -125,5 +125,9 @@ export default function ({ beforeEach, addRoute, removeRoute }: AnyObject) {
                 toHome(_toPath);
             }
         }
+    })
+
+    onError((error: any) => {
+        console.log(error)
     })
 }

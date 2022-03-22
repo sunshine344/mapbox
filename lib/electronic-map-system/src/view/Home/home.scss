@@ -1,0 +1,200 @@
+@import '@/assets/scss/config/color.scss';
+@import '@/assets/scss/config/commonStyle.scss';
+@import '@/assets/scss/config/font.scss';
+@import '@/assets/scss/config/size.scss';
+
+.home {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    // font-family: PingFangSC16;
+    color: var(--fontColorfff);
+
+    // color: #eba705;
+    .ant-menu-vertical .ant-menu-item::after,
+    .ant-menu-vertical-left .ant-menu-item::after,
+    .ant-menu-vertical-right .ant-menu-item::after,
+    .ant-menu-inline .ant-menu-item::after {
+        border: none;
+    }
+
+    .ant-menu-vertical .ant-menu-item:not(:last-child),
+    .ant-menu-vertical-left .ant-menu-item:not(:last-child),
+    .ant-menu-vertical-right .ant-menu-item:not(:last-child),
+    .ant-menu-inline .ant-menu-item:not(:last-child) {
+        margin-bottom: 1.65rem;
+    }
+
+    .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+        background-color: transparent;
+    }
+
+    .ant-menu .ant-menu-item {
+        // padding: 0 !important;
+        padding-left: 0 !important;
+        padding: 8.5px !important;
+    }
+
+    // .iconfont {
+    //     width: 20px;
+    //     height: 16px;
+    //     color: var(--fontColorfff);
+    // }
+
+    .map {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    .frame {
+        top: 60px;
+        width: 100%;
+        height: 92%;
+        position: absolute;
+        background: url('../../assets/images/frame.png') no-repeat;
+        background-size: 100% 100%;
+        pointer-events: none;
+    }
+
+    .content {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+
+        .page {
+            position: absolute;
+            width: 1794px;
+            height: 63.8rem;
+            top: 126px;
+            left: 63px;
+        }
+    }
+
+    .logo {
+        position: absolute;
+        left: 99px;
+        top: 38px;
+        width: 450px;
+        height: 70px;
+        display: flex;
+        flex-direction: column;
+        background: var(--logoBackground);
+        background-size: 100% 100%;
+        z-index: 3;
+    }
+
+    // 样式切换
+    .rest {
+        pointer-events: auto;        
+        position: absolute;
+        top: 19px;
+        right: 19px;
+        width: 370px;
+        height: 38px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+        // font-size: PingFangSC16;
+        color: var(--fontColorfff);
+        background: var(--styleChangeBackground);
+        .classify {
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            background: var(--subareaBackground);
+            background-size: 100% 100%;
+            width: 100px;
+            height: 38px;
+            cursor: pointer;
+            line-height: 38px;
+            i {
+                width: 20px;
+                height: 16px;
+                color: var(--fontColorfff);
+                display: inline-block;
+                // font-size: PingFangSC16;
+                margin-right: 5px;
+            }
+
+            .icon-switch {
+                font-size: 20px;
+            }
+
+            .icon-xiala1 {
+                margin-left: 5px;
+                margin-right: 0px;
+            }
+        }
+
+        .user {
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 38px;
+            background: var(--userBackground);
+            background-size: 100% 100%;
+            cursor: pointer;
+
+            .image {
+                width: 11px;
+                height: 10px;
+                margin-left: 5px;
+            }
+        }
+
+        .qustion {
+            width: 39px;
+            height: 38px;
+            background: var(--toolBarBackground);
+            background-size: 100% 100%;
+            text-align: center;
+            line-height: 38px;
+            cursor: pointer;
+        }
+    }
+
+    .user-list {
+        pointer-events: auto;                
+        position: absolute;
+        top: 64px;
+        right: 64px;
+        z-index: 3;
+        width: 102px;
+        height: 109px;
+        // border: 1px solid #125CA3;
+        background: url('../../assets/images/userbox.png') no-repeat;
+        // background: red;
+        background-size: 100% 100%;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        li {
+            width: 100%;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            box-sizing: border-box;
+            border: 1px solid transparent;
+        }
+        
+        li:hover{
+            border: 1px solid #FBCF0F;
+            background: rgba(235, 167, 5, 0.4);
+        }
+    }
+}
+
+.styleChange {
+    cursor: pointer;
+}
+
+#vertical-slider {
+    display: none;
+}

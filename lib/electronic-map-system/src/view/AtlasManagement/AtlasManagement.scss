@@ -1,0 +1,395 @@
+@import '../../assets/scss/config/color.scss';
+@import '../../assets/scss/config/commonStyle.scss';
+@import '../../assets/scss/config/font.scss';
+@import '../../assets/scss/config/size.scss';
+
+.AtlasManagementBox {
+    padding: var(--padding20);
+    box-sizing: border-box;
+    width: 1920px;
+    height: 100%;
+    background: url('./src/images/dtbeijing.png');
+    display: flex;
+    position: relative;
+
+    .leftNav {
+        position: absolute;
+        top: 12%;
+        left: 60px;
+        width: 240px;
+        height: 84%;
+    }
+
+    .AtlasManagementRight {
+        width: 1530px;
+        position: absolute;
+        top: 12%;
+        right: 60px;
+        margin-left: var(--padding20);
+        height: 84%;
+        background-color: var(--pageBackground);
+        border: 1px solid var(--pageBackground);
+        box-sizing: border-box;
+
+        .TopSerch {
+            height: 120px;
+            padding: var(--padding20);
+            box-sizing: border-box;
+
+            .serchTitle {
+                font-size: var(--FontSize20);
+                font-family: PingFangSC-Semibold, PingFang SC;
+                color: var(--auxColorfff);
+                text-align: left;
+
+                span {
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: var(--auxColor705);
+                    margin-right: 10px;
+                }
+            }
+
+            .serch {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: var(--padding12);
+
+                .left {
+                    .serInp {
+                        width: 780px;
+                        height: var(--itemHeight38);
+                        background-color: var(--pageBackground);
+                        border: 1px solid var(--pageBackground);
+                        margin-right: var(--padding20);
+                        outline: none;
+                        color: var(--defaultFontColored4);
+                        text-indent: 5px;
+                    }
+
+                    .serBtn {
+                        line-height: var(--itemHeight38);
+                        width: 80px;
+
+                        color: var(--auxColorfff);
+                        font-size: var(--defaultFontSize);
+                        display: inline-block;
+                        cursor: pointer;
+                        background: var(--btnLinear);
+                        border: 1px solid var(--pageBackground);
+                    }
+
+                    .serBtn:hover {
+                        background: var(--activeBackgroundColor);
+                        border: 1px solid var(--activeborderColor);
+                    }
+                }
+
+                .right {
+                    .add {
+                        width: 80px;
+                        line-height: var(--itemHeight38);
+                        background: var(--btnLinear);
+                        border: 1px solid var(--pageBackground);
+                        color: var(--defaultFontColored4);
+                        cursor: pointer;
+                    }
+
+                    :hover {
+                        background: var(--activeBackgroundColor);
+                        border: 1px solid var(--activeborderColor);
+                    }
+                }
+            }
+        }
+
+        .tab {
+            padding: var(--padding20);
+            height: 620px;
+
+            li {
+                padding: 0 var(--padding20);
+                height: 180px;
+                width: 100%;
+                border: 1px solid var(--pageBackground);
+                display: flex;
+                justify-content: space-around;
+                margin-bottom: var(--padding10);
+
+                .imgbox {
+                    width: 140px;
+                    height: 140px;
+                    margin-right: var(--padding20);
+                    margin-top: var(--padding20);
+                    box-sizing: border-box;
+
+                    img {
+                        width: 140px;
+                        height: 140px;
+                    }
+                }
+
+                .textbox {
+                    flex: 1;
+                    font-size: var(--FontSize16);
+                    color: var(--defaultFontColored4);
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    text-align: left;
+                    padding-top: 10px;
+
+                    p {
+                        margin-bottom: 0;
+                        line-height: 32px;
+                    }
+
+                    span {
+                        color: var(--auxFontColor3ff);
+                        display: inline-block;
+                        margin-left: var(--padding12);
+                    }
+                }
+
+                .btnbox {
+                    margin-top: var(--padding20);
+
+                    button {
+                        width: 80px;
+                        line-height: var(--itemHeight38);
+                        cursor: pointer;
+                        margin-left: var(--padding12);
+                        background-color: var(--btnLinear);
+                        border: 1px solid var(--pageBackground);
+                        color: var(--defaultFontColored4);
+                    }
+
+                    button:hover {
+                        background-color: var(--activeBackgroundColor);
+                        border: 1px solid var(--activeborderColor);
+                        color: var(--auxColorfff);
+                    }
+                }
+            }
+        }
+
+        .pag {
+            padding-right: var(--padding20);
+
+            .ant-pagination {
+                text-align: right;
+            }
+
+
+
+            .ant-pagination li {
+                height: 18px;
+                width: 18px;
+                min-width: 18px;
+                line-height: 18px;
+                font-size: 14px;
+                text-align: center;
+                // background: transparent;
+                border: 1px solid transparent;
+
+
+                a {
+                    width: 100%;
+                    height: 100%;
+                    text-align: center;
+                    margin-left: -2px;
+                    margin-top: -2px;
+                    color: #CCCED4;
+                }
+            }
+
+            .ant-pagination li:hover {
+                border: 1px solid #FBCF0F;
+                background: rgba(235, 167, 5, 0.4);
+
+                a {
+                    color: #fff;
+
+                }
+            }
+
+            .ant-pagination-item-active {
+                border: 1px solid #FBCF0F;
+                background: rgba(235, 167, 5, 0.4);
+            }
+
+            .ant-pagination .ant-pagination-prev {
+                background: transparent;
+                border: 1px solid transparent;
+            }
+
+            .ant-pagination-prev .ant-pagination-item-link,
+            .ant-pagination-next .ant-pagination-item-link {
+                background: transparent;
+                border: 1px solid transparent;
+            }
+
+
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 5, 0.8);
+
+            .modulbox {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                padding: 20px 40px;
+                box-sizing: border-box;
+                width: 525px;
+                height: 768px;
+                background: url(./src/images/moudl.png);
+
+                .modulHead {
+                    // padding: 0 var(--padding20);
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    font-size: 18px;
+                    // margin-bottom: 20px;
+
+                    span {
+                        display: inline-block;
+                        width: 10px;
+                        height: 10px;
+                        background: #EBA705;
+                        border-radius: 50%;
+                    }
+
+                    img {
+                        cursor: pointer;
+                    }
+                }
+
+                p {
+                    text-align: left;
+                }
+
+
+                .from {
+                    p {
+                        color: #CCCED4;
+                        margin-top: 20px;
+                    }
+
+                    .ant-form-item-control-input {
+                        // margin-bottom: 25px;
+                    }
+
+                    .ant-form-inline {
+                        display: block;
+                    }
+
+                    .ant-form-inline .ant-form-item {
+                        margin-right: 0px;
+                    }
+
+                    .ant-form-item-explain-error {
+
+                        position: absolute;
+                        left: 0;
+                        bottom: -25px;
+                        text-align: left;
+                    }
+
+                    .ant-upload.ant-upload-select-picture-card {
+                        background: rgba(15, 82, 166, 0.3);
+                        border: 1px solid rgba(13, 98, 192, 0.8);
+                    }
+
+                    .ant-upload {
+                        p {
+                            font-size: 12px;
+                            color: #CCCED4;
+                        }
+                    }
+
+                    .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+                        background: linear-gradient(180deg, #103A78 0%, #042243 100%);
+                        border: 1px solid rgba(18, 92, 163, 0.4);
+                        color: var(--auxColorfff);
+                        text-align: left;
+                        min-height: 40px;
+                    }
+
+                    .ant-select-selection-placeholder {
+                        color: #CCCED4;
+                    }
+
+                    .ant-select-arrow {
+                        color: #CCCED4;
+                    }
+
+                    .ant-calendar-picker-icon {
+                        color: #CCCED4;
+                    }
+
+                    textarea.ant-input {
+                        max-height: 70px;
+                    }
+
+                    .ant-input {
+                        // width: 100%;
+                        min-height: 40px;
+                        color: #CCCED4;
+                        border: 1px solid rgba(18, 92, 163, 0.4);
+                        background: linear-gradient(180deg, #103A78 0%, #042243 100%);
+                    }
+
+                    button {
+                        margin-top: 20px;
+                        background: linear-gradient(180deg, #103A78 0%, #042243 100%);
+                        border: 1px solid var(--pageBackground);
+                        color: var(--defaultFontColored4);
+                    }
+
+                    button:hover {
+                        background: var(--activeBackgroundColor);
+                        border: 1px solid var(--activeborderColor);
+                    }
+
+                    .ant-form-inline .ant-form-item-with-help,
+                    .ant-form-inline .ant-form-item-with-help {
+                        margin: 0;
+                    }
+
+                    .ant-select-item-option {
+                        color: #CCCED4;
+                        background: linear-gradient(180deg, #103A78 0%, #042243 100%);
+                    }
+
+                    .hp {
+                        margin: 10px 0 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ant-select-item-option {
+    color: #CCCED4;
+    background: linear-gradient(180deg, #103A78 0%, #042243 100%);
+}
+
+.ant-select-dropdown {
+    padding: 0;
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    color: #CCCED4;
+}

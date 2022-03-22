@@ -1,0 +1,28 @@
+#longlatinfopoup{
+    background: var(--backgroundColor);
+    border-radius: var(--borderradius);
+    width: 300px;
+    pointer-events: auto;
+    .loccationinfopoup-title{
+        width: 100%;
+        height:var(--itemHeight);
+        text-align: right;
+        line-height:var(--itemHeight);
+        padding:0 var(--padding20);
+        &_closeicon{
+            color:#fff;
+            font-size: var(--FontSize18);
+            cursor: pointer;
+        }
+        
+    }
+    
+    .ant-form{
+        padding:0 var(--padding20);
+    }
+    .loccationinfopoup-title_closeicon{
+        cursor: pointer;
+    }
+   
+}
+

@@ -5,3 +5,4 @@ dist-ssr
 src/config/amb.ts
 *.local
 yarn.lock
+.vscode

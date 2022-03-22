@@ -1,0 +1,29 @@
+[[dev]]
+// 开发环境
+[api]
+BASE_URL = "http://10.51.103.14:5000";
+SEARCH_URL="http://10.51.100.2:19100";//高级搜索搜索查询
+[config]
+mock=false
+systemName = "DevDependencies system name";
+
+[[test]]
+// 测试环境
+[api]
+BASE_URL = "http://xxx.test.pro.com"
+[config]
+// 系统名称
+systemName = "Test system name";
+env_type="test"
+BASE_API_CONFIG = "./ambiences.config.json"
+
+[[production]]
+// 正式环境
+[api]
+BASE_URL = "http://10.51.100.2:8000";
+SEARCH_URL="http://10.51.100.2:19100";//高级搜索搜索查询
+[config]
+// 系统名称
+systemName = "Production system name";
+env_type="production"
+BASE_API_CONFIG = "./ambiences.config.json"

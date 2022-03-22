@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 16:15:51
  * @LastEditors  : Pat
- * @LastEditTime : 2022-01-12 18:01:33
+ * @LastEditTime : 2022-02-25 17:02:26
 -->
 
 
@@ -20,7 +20,6 @@ let hallo = `hallo word! ${name} ${role} ${token}`;
 </script>
 <style>
 #app {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;

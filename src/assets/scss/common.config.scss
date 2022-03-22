@@ -1,4 +1,5 @@
 @charset 'utf-8';
 @import './config/color.scss';
 @import './config/size.scss';
-@import './config/commonStyle.scss';
+@import './config/common.scss';
+@import "@components/Message/src/scss/index.scss";

@@ -1,0 +1,194 @@
+@import '../../assets/scss/config/color.scss';
+@import '../../assets/scss/config/commonStyle.scss';
+@import '../../assets/scss/config/font.scss';
+@import '../../assets/scss/config/size.scss';
+
+.LogManagementBox {
+    padding: var(--padding20);
+    box-sizing: border-box;
+    width: 1920px;
+    height: 100%;
+    background: url('./src/images/dtbeijing.png');
+    display: flex;
+    // pointer-events: auto;
+    position: relative;
+
+    .leftNav {
+        position: absolute;
+        top: 12%;
+        left: 60px;
+        width: 240px;
+        height: 84%;
+    }
+
+    .rightCon {
+        height: 84%;
+        width: 1530px;
+        position: absolute;
+        top: 12%;
+        right: 60px;
+        margin-left: var(--padding20);
+        background-color: var(--pageBackground);
+        border: 1px solid var(--pageBackground);
+        box-sizing: border-box;
+        padding: var(--padding20);
+
+        .topSerch {
+            display: flex;
+
+            .ant-input {
+                width: 200px;
+                color: #CCCED4;
+                border: 1px solid rgba(18, 92, 163, 0.4);
+                background: linear-gradient(180deg, #103A78 0%, #042243 100%);
+            }
+
+
+            button {
+                margin-left: var(--padding12);
+                background: linear-gradient(180deg, #103A78 0%, #042243 100%);
+                border: 1px solid var(--pageBackground);
+                color: var(--defaultFontColored4);
+            }
+
+            button:hover {
+                background: var(--activeBackgroundColor);
+                border: 1px solid var(--activeborderColor);
+            }
+        }
+
+        .tab {
+            min-height: 700px;
+
+            .bomtab {
+                width: 100%;
+                margin-top: 20px;
+                table-layout: fixed;
+
+                thead>tr>th {
+                    color: #CCCED4;
+                    height: 38px;
+                    background: rgba(18, 92, 163, 1);
+                    box-sizing: border-box;
+                    padding: 8px 21px;
+                    width: 90px;
+                    text-align: center;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                thead>tr>th:nth-child(1) {
+                    width: 50px;
+                    // text-align: left;
+                }
+
+                // thead>tr>th:nth-child(2) {
+                //     width: 200px;
+                // }
+
+                tbody>tr>td {
+                    height: 36px;
+                    text-align: center;
+                    padding: 8px 21px;
+                    width: 90px;
+                    background: var(--pageBackground);
+                    color: #CCCED4;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+
+
+
+                    button {
+                        // background: transparent;
+                        // border: none;
+                        background: linear-gradient(180deg, #103A78 0%, #042243 100%);
+                        border: 1px solid var(--pageBackground);
+                        color: var(--defaultFontColored4);
+                    }
+
+                    button:hover {
+                        color: rgba(251, 207, 15, 1);
+                        background: rgba(235, 167, 5, 0.4);
+                        border: 1px solid #FBCF0F;
+                    }
+                }
+
+                tbody>tr>td:nth-child(1) {
+                    width: 50px;
+                }
+
+            }
+
+            .ant-modal-footer {
+                >div {
+                    .ant-btn {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .pag {
+            padding-right: var(--padding20);
+
+            .ant-pagination {
+                text-align: right;
+            }
+
+            .ant-pagination li {
+                font-size: 14px;
+                text-align: center;
+
+                a {
+                    text-align: center;
+                    color: #CCCED4;
+                }
+            }
+
+            .anticon {
+                font-size: 16px;
+            }
+
+            .ant-pagination-jump-prev,
+            .ant-pagination-jump-next {
+                display: none;
+            }
+
+            .ant-pagination li:hover {
+                border: 1px solid #FBCF0F;
+                background: rgba(235, 167, 5, 0.4);
+
+                a {
+                    color: #fff;
+                }
+            }
+
+            .ant-pagination-item-active {
+                border: 1px solid #FBCF0F;
+                background: rgba(235, 167, 5, 0.4);
+            }
+
+            .ant-pagination .ant-pagination-prev {
+                background: transparent;
+                border: 1px solid transparent;
+            }
+
+            .ant-pagination-prev .ant-pagination-item-link,
+            .ant-pagination-next .ant-pagination-item-link {
+                background: transparent;
+                border: 1px solid transparent;
+            }
+        }
+
+    }
+
+    #components-a-tooltip-demo-placement .ant-btn {
+        width: 70px;
+        text-align: center;
+        padding: 0;
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
+}

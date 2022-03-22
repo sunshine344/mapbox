@@ -1,0 +1,73 @@
+.el-info-message {
+    position: fixed;
+    padding: 2px 4px;
+    border-radius: var(--radius);
+    z-index: 999;
+    background-color: white;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+    bottom: var(--spacing);
+    transition: all .5s;
+
+    * {
+        transition: all .5s;
+    }
+
+    $TYPE_THEME: ((className: success, backgroundColor: #67C23A, boxShowColor:rgba(103, 194, 58, 0.2)),
+        (className: warning, backgroundColor: #E6A23C, boxShowColor:rgba(230, 162, 60, 0.2)),
+        (className: info, backgroundColor: #909399, boxShowColor:rgba(144, 147, 153, 0.2)),
+        (className: error, backgroundColor: #F56C6C, boxShowColor:rgba(245, 108, 108, 0.2)));
+    $POSITION: ((className: top, autoPositisonName: bottom),
+        (className: bottom, autoPositisonName: top),
+        (className: left, autoPositisonName: right),
+        (className: right, autoPositisonName: left),
+    );
+
+    @for $i from 1 through length($TYPE_THEME) {
+        $item: nth($TYPE_THEME, $i);
+
+        &.el-msg-#{map-get($item, className)} {
+            color: white;
+            background-color: map-get($item, backgroundColor);
+            // box-shadow: 0 0 4px 0 map-get($item, boxShowColor);
+        }
+    }
+
+    @for $P from 1 through length($POSITION) {
+        $item: nth($POSITION, $P);
+        $Name: map-get($item, className);
+        $Auto: map-get($item, autoPositisonName);
+
+        &.#{$Name} {
+            #{$Name}: var(--spacing);
+            #{$Auto}: auto !important;
+        }
+
+        @keyframes start-#{$Name} {
+            from {
+                #{$Name}: -100%;
+            }
+
+            to {
+                #{$Name}: var(--spacing);
+            }
+        }
+
+        &.#{$Name}-animation {
+            animation: start-#{$Name} 0.5s;
+        }
+    }
+
+    @keyframes outMsg {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+
+    &.msg-out {
+        animation: outMsg 1s;
+    }
+}

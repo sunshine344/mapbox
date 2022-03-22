@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2021-10-18 18:05:27
+ * @LastEditTime : 2022-02-25 17:44:49
  */
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue'
@@ -90,9 +90,16 @@ export default ({ command, mode }: ConfigEnv): any => {
 			chunkSizeWarningLimit: 500,
 			commonjsOptions: { ignore: [] },
 		},
-		css: {},
+		css: {
+			preprocessorOptions: {
+				scss: {
+					charset: false,
+				}
+			}
+		},
 		// Api reverse proxy
 		server: {
+			cors: true,
 			port: VITE_PORT,
 			proxy: createProxy(VITE_PROXY),
 			hmr: { overlay: false },
