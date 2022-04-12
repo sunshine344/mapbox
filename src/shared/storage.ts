@@ -4,41 +4,30 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2020-12-15 11:47:20
  * @LastEditors  : Pat
- * @LastEditTime : 2021-12-17 15:02:44
+ * @LastEditTime : 2022-04-12 15:03:50
  */
-import { config } from "@config/amb";
-import { isArray, isObject, isString } from "igu/lib/core/basic";
-import { objectEach } from "igu/lib/core/utils";
-const sysType: string = config?.sysType || "";
+import { config } from '@config/amb';
+import { isArray, isObject, isString } from 'igu/lib/core/basic';
+import { objectEach } from 'igu/lib/core/utils';
+const sysType: string = config?.sysType || '';
 // 缓存时间 always
-const expiresTime = (60 * 1000) * 60 * 12;
+const expiresTime = 60 * 1000 * 60 * 12;
 export declare interface StorageOption {
-    value: any,
-    expires: number | string,
-    startTime: number | string
+	value: any;
+	expires: number | string;
+	startTime: number | string;
 }
-const Storage = window.localStorage || (globalThis.localStorage);
-/**
- * @description: Determine whether the data type is the specified type
- * @param {any} obj all data type
- * @param {string} type specified type
- * @return {boolean} Whether the specified type
- * @Date: 2021-01-27 10:20:37
- * @author: Pat
- */
-function isType(obj: any, type: string = "object"): boolean {
-    return Object.prototype.toString.call(obj) === `[object ${Case(type.toLowerCase())}]`
-};
+const Storage = window.localStorage || globalThis.localStorage;
 function isJSON(str: string) {
-    if (typeof str == 'string') {
-        try {
-            JSON.parse(str);
-            return true;
-        } catch (e) {
-            return false;
-        }
-    }
-    return false;
+	if (typeof str == 'string') {
+		try {
+			JSON.parse(str);
+			return true;
+		} catch (e) {
+			return false;
+		}
+	}
+	return false;
 }
 
 /**
@@ -48,9 +37,9 @@ function isJSON(str: string) {
  * @Date: 2021-01-27 10:22:59
  * @author: Pat
  */
-function Case(str: string): string {
-    return str.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase())
-};
+export function Case(str: string): string {
+	return str.toLowerCase().replace(/( |^)[a-z]/g, L => L.toUpperCase());
+}
 /**
  * @description: set storage item
  * @param {string} name storage name
@@ -61,23 +50,26 @@ function Case(str: string): string {
  * @author: Pat
  */
 export function setup(name: any, params: any, expires: string | number = expiresTime): any {
-    if (isArray(name)) {
-        name.forEach((item: any, i: any) => setup(item, params[i], expires));
-        return;
-    } else if (isObject(name)) {
-        objectEach(name, (i: any, item: string | number) => setup(item, i, expires));
-        return;
-    } else if (isString(name)) {
-        name = `${sysType}${name}`;
-        Storage.setItem(name, JSON.stringify({
-            // Storage option params
-            value: params,
-            // Expiration time, set to always to save
-            expires,
-            // Record when the value is stored in the cache, milliseconds
-            startTime: expires === "always" ? expires : new Date().getTime()
-        }));
-    }
+	if (isArray(name)) {
+		name.forEach((item: any, i: any) => setup(item, params[i], expires));
+		return;
+	} else if (isObject(name)) {
+		objectEach(name, (i: any, item: string | number) => setup(item, i, expires));
+		return;
+	} else if (isString(name)) {
+		name = `${sysType}${name}`;
+		Storage.setItem(
+			name,
+			JSON.stringify({
+				// Storage option params
+				value: params,
+				// Expiration time, set to always to save
+				expires,
+				// Record when the value is stored in the cache, milliseconds
+				startTime: expires === 'always' ? expires : new Date().getTime(),
+			}),
+		);
+	}
 }
 /**
  * @description: get storage item
@@ -87,25 +79,25 @@ export function setup(name: any, params: any, expires: string | number = expires
  * @author: Pat
  */
 export function getsub(name: string): any {
-    name = `${sysType || ''}${name}`;
-    let item: string | null | any = Storage.getItem(name);
-    if (isJSON(item)) item = JSON.parse(item);
-    if (item) {
-        // has the value of startTime
-        // set expiration time
-        if (item.startTime != "always") {
-            const date: number = new Date().getTime();
-            // invalidate clear cache false
-            if (isNaN(item.expires) || (date - item.startTime > (item?.expires || 0))) {
-                removeSub(name);
-                return false;
-            }
-            return item?.value || item;
-        }
-        // No expiration time is set, return directly
-        return item?.value || item;
-    }
-    return false;
+	name = `${sysType || ''}${name}`;
+	let item: string | null | any = Storage.getItem(name);
+	if (isJSON(item)) item = JSON.parse(item);
+	if (item) {
+		// has the value of startTime
+		// set expiration time
+		if (item.startTime != 'always') {
+			const date: number = new Date().getTime();
+			// invalidate clear cache false
+			if (isNaN(item.expires) || date - item.startTime > (item?.expires || 0)) {
+				removeSub(name);
+				return false;
+			}
+			return item?.value || item;
+		}
+		// No expiration time is set, return directly
+		return item?.value || item;
+	}
+	return false;
 }
 /**
  * @description: Remove storage item
@@ -115,13 +107,16 @@ export function getsub(name: string): any {
  * @author: Pat
  */
 export function removeSub(...name: any): any {
-    if (!name) { clear(); return; };
-    if (Array.isArray(name)) {
-        name.forEach((str: string) => Storage.removeItem(str))
-    } else {
-        name = `${sysType}${name}`;
-        Storage.removeItem(name)
-    }
+	if (!name) {
+		clear();
+		return;
+	}
+	if (Array.isArray(name)) {
+		name.forEach((str: string) => Storage.removeItem(str));
+	} else {
+		name = `${sysType}${name}`;
+		Storage.removeItem(name);
+	}
 }
 
 /**
@@ -131,7 +126,7 @@ export function removeSub(...name: any): any {
  * @author: Pat
  */
 export function clearAll(): any {
-    Storage.clear();
+	Storage.clear();
 }
 
 export const clear = clearAll;

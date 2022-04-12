@@ -13,5 +13,5 @@ BASE_URL = "http://xxx.api.pro.com";
 [config]
 // 系统名称
 systemName = "Production system name";
-env_type="production"
+envType="production"
 BASE_API_CONFIG = "./ambiences.config.json"

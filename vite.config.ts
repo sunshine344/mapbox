@@ -1,17 +1,17 @@
 /*
  * @Autor        : Pat
- * @Description  : 
+ * @Description  :
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
  * @LastEditTime : 2022-02-25 17:44:49
  */
 import { resolve } from 'path';
-import vue from '@vitejs/plugin-vue'
+import vue from '@vitejs/plugin-vue';
 import legacy from '@vitejs/plugin-legacy';
 import { ambiences } from 'ambiences';
-import { defineConfig, ConfigEnv, loadEnv, PluginOption } from 'vite'
-import { createProxy, wrapperEnv, getOutDirName } from "./config/common";
+import { defineConfig, ConfigEnv, loadEnv, PluginOption } from 'vite';
+import { createProxy, wrapperEnv, getOutDirName } from './config/common';
 export const pathResolve = (dir: string) => resolve(__dirname, '.', dir);
 // console.log(ambience)
 // https://vitejs.dev/config/
@@ -34,8 +34,8 @@ export default ({ command, mode }: ConfigEnv): any => {
 				'@scss': `${pathResolve('src/assets/scss')}/`,
 				'@router': `${pathResolve('src/config/router')}/`,
 				'@store': `${pathResolve('src/config/store')}/`,
-				'@shared': `${pathResolve('src/shared')}/`
-			}
+				'@shared': `${pathResolve('src/shared')}/`,
+			},
 		},
 		plugins: [
 			vue(),
@@ -46,12 +46,12 @@ export default ({ command, mode }: ConfigEnv): any => {
 			}),
 			ambiences('json', outDir, {
 				// 开发环境需要什么amb.*类型文件，可选 ts、tsx、js、jsx
-				env: "ts",
+				env: 'ts',
 				// 开发环境中配置文件输出到什么目录
-				path: "src/config",
+				path: 'src/config',
 				// 当前是否为生产版本
 				// isPro: false
-			}) as unknown as PluginOption
+			}) as unknown as PluginOption,
 		],
 		define: {
 			__VUE_I18N_LEGACY_API__: false,
@@ -94,8 +94,8 @@ export default ({ command, mode }: ConfigEnv): any => {
 			preprocessorOptions: {
 				scss: {
 					charset: false,
-				}
-			}
+				},
+			},
 		},
 		// Api reverse proxy
 		server: {
@@ -104,5 +104,5 @@ export default ({ command, mode }: ConfigEnv): any => {
 			proxy: createProxy(VITE_PROXY),
 			hmr: { overlay: false },
 		},
-	})
+	});
 };

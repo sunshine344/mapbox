@@ -6,5 +6,5 @@
  * @LastEditors  : Pat
  * @LastEditTime : 2021-09-28 14:47:37
  */
-import _Test from "./src";
+import _Test from './src';
 export default _Test;

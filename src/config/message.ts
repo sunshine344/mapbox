@@ -4,18 +4,18 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-11-01 18:56:41
  * @LastEditors  : Pat
- * @LastEditTime : 2021-12-17 10:21:51
+ * @LastEditTime : 2022-04-12 14:55:54
  */
-import { output } from "@shared/_utlis";
+import { output } from '@shared/_utlis';
 export const message = {
-    "user_login_ok": "登录成功。",
-    "user_name_enter": "请输入用户名",
-    "user_password_enter": "请输入用户密码",
-    "password_invalid": "密码错误！",
-    "internal_error": "系统内部错误！请联系管理员。",
-    "user_name_or_password_incorrect": "用户名或者密码错误",
-    "user_name_is_null": "用户名不能为空！",
-    "password_is_null": "密码不能为空！",
+	userLoginOk: '登录成功。',
+	userNameEnter: '请输入用户名',
+	userPasswordenter: '请输入用户密码',
+	passwordInvalid: '密码错误！',
+	internalError: '系统内部错误！请联系管理员。',
+	userNameOrPasswordIncorrect: '用户名或者密码错误',
+	userNameIsNull: '用户名不能为空！',
+	passwordIsNull: '密码不能为空！',
 };
 /**
  * @description: output Message

@@ -8,12 +8,12 @@
  */
 import type { RouteRecordRaw } from 'vue-router';
 export default [
-    {
-        path: '/home',
-        name: 'Home',
-        meta: {
-            name: "首页"
-        },
-        component: () => import("@view/Home.vue"),
-    }
+	{
+		path: '/home',
+		name: 'Home',
+		meta: {
+			name: '首页',
+		},
+		component: () => import('@view/Home.vue'),
+	},
 ] as RouteRecordRaw[];

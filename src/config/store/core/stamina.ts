@@ -8,16 +8,16 @@
  */
 import { setup, getsub } from '@shared/storage';
 import { watch, toRaw, readonly, reactive } from 'vue';
-import { APP_CONFIG_STORE_NAME } from "../../enum";
+import { APP_CONFIG_STORE_NAME } from '../../enum';
 
 const setItem = (key: string, state: any) => {
-    const stateRow = getsub(APP_CONFIG_STORE_NAME) || {};
-    stateRow[key] = state;
-    setup(APP_CONFIG_STORE_NAME, stateRow);
+	const stateRow = getsub(APP_CONFIG_STORE_NAME) || {};
+	stateRow[key] = state;
+	setup(APP_CONFIG_STORE_NAME, stateRow);
 };
 const getItem = (key?: string) => {
-    const stateRow = getsub(APP_CONFIG_STORE_NAME);
-    return (key ? stateRow[key] : stateRow) || {};
+	const stateRow = getsub(APP_CONFIG_STORE_NAME);
+	return (key ? stateRow[key] : stateRow) || {};
 };
 /**
  * @description: Create long storage space
@@ -28,8 +28,12 @@ const getItem = (key?: string) => {
  * @Date: 2021-10-16 20:29:11
  * @author: Pat
  */
-export function createPersistStorage<T>(state: any, key: string | undefined = 'default', isModel: boolean = false): T {
-    Object.entries(getItem(key)).forEach(([key, value]) => (state[key] = value));
-    watch(state, () => setItem(key, toRaw(state) || state));
-    return isModel ? reactive(state) : readonly(state)
-};
+export function createPersistStorage<T>(
+	state: any,
+	key: string | undefined = 'default',
+	isModel = false,
+): T {
+	Object.entries(getItem(key)).forEach(([key, value]) => (state[key] = value));
+	watch(state, () => setItem(key, toRaw(state) || state));
+	return isModel ? reactive(state) : readonly(state);
+}

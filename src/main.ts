@@ -7,15 +7,15 @@
  * @LastEditTime : 2022-01-06 13:59:19
  */
 import App from './App';
-import { createApp } from 'vue'
-import { config, ENV } from "@config/amb";
+import { createApp } from 'vue';
+import { config, ENV } from '@config/amb';
 import { setRoute } from '@router';
-import requestRem from "@shared/rem";
-import { setTitle } from "igu/lib/core/utils";
+import requestRem from '@shared/rem';
+import { setTitle } from 'igu/lib/core/utils';
 import '@scss/common.scss';
-import "@components/Message/src/scss/index.scss";
+import '@components/Message/src/scss/index.scss';
 import { setupProdMockServer } from '../mock/_createProductionServer';
-import { requestApi } from "@api/config/request";
+import { requestApi } from '@api/config/request';
 const app = createApp(App);
 requestApi();
 setRoute(app);
@@ -26,15 +26,14 @@ app.config.warnHandler = () => null;
 // Open system performance
 app.config.performance = true;
 // The development environment takes effect
-if (ENV === "dev") {
-    // Whether to enable Mockjs
-    // If the Amb mock parameter is enabled
-    // then mock data simulation is enabled
-    if (config?.mock || !config?.mock) {
-        setupProdMockServer()
-    };
+if (ENV === 'dev') {
+	// Whether to enable Mockjs
+	// If the Amb mock parameter is enabled
+	// then mock data simulation is enabled
+	if (config?.mock || !config?.mock) {
+		setupProdMockServer();
+	}
 } else {
-    // Close page error prompt
-    app.config.errorHandler = () => null;
-};
-
+	// Close page error prompt
+	app.config.errorHandler = () => null;
+}

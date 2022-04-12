@@ -7,12 +7,12 @@
  * @LastEditTime : 2021-09-18 14:32:05
  */
 import { createBlock, defineComponent, openBlock } from 'vue';
-import { RouterView } from "vue-router";
+import { RouterView } from 'vue-router';
 // Initialization App main
 // Vue tsx development model
 export default defineComponent({
 	name: 'App',
 	setup() {
 		return () => (openBlock(), createBlock(RouterView));
-	}
+	},
 });

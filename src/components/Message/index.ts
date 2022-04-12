@@ -6,5 +6,5 @@
  * @LastEditors  : Pat
  * @LastEditTime : 2021-02-04 17:21:57
  */
-import _Message from "./src";
-export default _Message
+import _Message from './src';
+export default _Message;

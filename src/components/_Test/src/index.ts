@@ -4,24 +4,22 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-03-03 16:32:01
  * @LastEditors  : Pat
- * @LastEditTime : 2021-09-28 14:48:29
+ * @LastEditTime : 2022-04-12 15:05:35
  */
-import { AnyObject } from 'igu/lib/core/utils';
 import { defineComponent, App } from 'vue';
 
-const props = {
-}
+const props = {};
 
 // Initialization module
 const TimelineComponent = defineComponent({
-    name: '_Test',
-    props,
-    // Initialization
-    // Vue3.0 nitialization function
-    // https://v3.cn.vuejs.org/guide/migration/attrs-includes-class-style.html#%E6%A6%82%E8%A7%88
-    setup() {
-        return {}
-    }
+	name: 'Test',
+	props,
+	// Initialization
+	// Vue3.0 nitialization function
+	// https://v3.cn.vuejs.org/guide/migration/attrs-includes-class-style.html#%E6%A6%82%E8%A7%88
+	setup() {
+		return {};
+	},
 });
 
 /**
@@ -32,11 +30,12 @@ const TimelineComponent = defineComponent({
  * @Date: 2021-01-28 14:26:18
  * @author: Pat
  */
-TimelineComponent.render = (_ctx: AnyObject) => {
-    return
+TimelineComponent.render = () => {
+	return;
 };
 // Initialization current components
 // Retrieve the registered component (always return the constructor)
 // https://v3.cn.vuejs.org/api/application-api.html#component
-TimelineComponent.install = (app: App<Element>) => app.component(TimelineComponent.name, TimelineComponent);
+TimelineComponent.install = (app: App<Element>) =>
+	app.component(TimelineComponent.name, TimelineComponent);
 export default TimelineComponent;

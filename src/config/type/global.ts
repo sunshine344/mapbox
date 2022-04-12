@@ -7,23 +7,22 @@
  * @LastEditTime : 2021-09-28 14:27:21
  */
 export declare interface StorageOption {
-    value: any,
-    expires: number | string,
-    startTime: number
+	value: any;
+	expires: number | string;
+	startTime: number;
 }
 
 export declare interface StorageItem {
-    key: string,
-    value: string
+	key: string;
+	value: string;
 }
 
 export declare interface AnyObject {
-    [key: string]: any;
+	[key: string]: any;
 }
 
-
 export interface RequestObject {
-    data: AnyObject,
-    msg: string,
-    code: number
+	data: AnyObject;
+	msg: string;
+	code: number;
 }

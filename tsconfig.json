@@ -14,7 +14,7 @@
     "isolatedModules": false,
     "lib": ["esnext", "dom"],
     "baseUrl": "./",
-		"paths": {
+    "paths": {
       "@/": ["./src/*"],
       "@api/": ["./src/api/*"],
       "@scss/": ["./src/scss/*"],
@@ -26,7 +26,7 @@
       "@router/": ["./src/config/router/*"],
       "@containers/": ["./src/containers/*"],
       "@components/": ["./src/components/*"]
-		},
+    }
   },
   "exclude": ["node_modules", "dist"],
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]

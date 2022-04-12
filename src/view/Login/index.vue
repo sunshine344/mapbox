@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-18 15:30:56
  * @LastEditors  : Pat
- * @LastEditTime : 2021-12-17 16:59:10
+ * @LastEditTime : 2022-04-12 14:31:32
 -->
 <template>
 	<div class="login">
@@ -16,17 +16,17 @@
 				</div>
 				<div class="ruleForm">
 					<input
+						v-model="ues.username"
 						type="text"
 						class="input"
 						placeholder="请输入用户名"
-						v-model="ues.username"
 						@keyup.enter="iLogin"
 					/>
 					<input
+						v-model="ues.password"
 						type="password"
 						class="input last-child"
 						placeholder="请输入密码"
-						v-model="ues.password"
 						@keyup.enter="iLogin"
 					/>
 					<button class="Login" @click="iLogin">登陆</button>
@@ -36,44 +36,46 @@
 				<li v-for="(item, i) in list" :key="i"></li>
 			</ul>
 			<div class="sphere">
-				<div class="ring" :class="`ring_${i}`" v-for="(item, i) in list" :key="i"></div>
+				<div v-for="(item, i) in list" :key="i" class="ring" :class="`ring_${i}`"></div>
 			</div>
 		</div>
 	</div>
 </template>
-<style lang="scss" scoped>
-@import "./login.scss";
-</style>
 <script lang="ts">
-import { defineComponent, reactive, ref, withKeys } from "vue";
-import { Login } from "@api/core/use";
-import Message from "@components/Message";
-import { useRouter } from "vue-router";
-import { actions, clearState } from "@store";
+import { defineComponent, reactive, ref } from 'vue';
+import { Login } from '@api/core/use';
+import Message from '@components/Message';
+import { useRouter } from 'vue-router';
+import { actions, clearState } from '@store';
 
 const ues = reactive({
-	username: "",
-	password: "",
+	username: '',
+	password: '',
 });
 const route = ref();
 const getValue = (obj: any, value: any) => obj.value && obj.value[value] && obj.value[value];
 
+interface AnyObject {
+	[key: string]: any;
+}
+
 async function iLogin() {
 	if (!verification()) {
-		Message.error("请输入用户名/密码");
+		Message.error('请输入用户名/密码');
 		return;
 	}
-	Login(ues).then(({ code, msg, data }: AnyObject) => {
-		if (code === 200) {
-			actions.updateUser(data);
-			actions.updateToken(data.token);
-			getValue(route, "push")("/home");
-		};
-		Message[code === 200 ? "success" : "error"](msg);
-	}).catch((error: AnyObject) => {
-		console.log(error)
-		Message.error("登陆失败！");
-	})
+	Login(ues)
+		.then(({ code, msg, data }: AnyObject) => {
+			if (code === 200) {
+				actions.updateUser(data);
+				actions.updateToken(data.token);
+				getValue(route, 'push')('/home');
+			}
+			Message[code === 200 ? 'success' : 'error'](msg);
+		})
+		.catch(() => {
+			Message.error('登陆失败！');
+		});
 }
 
 function verification() {
@@ -93,3 +95,6 @@ export default defineComponent({
 	},
 });
 </script>
+<style lang="scss" scoped>
+@import './login.scss';
+</style>
