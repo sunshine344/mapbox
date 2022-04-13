@@ -11,7 +11,9 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "prettier": "prettier -c --write **/*",
-    "lint": "eslint src --fix --ext .js,.ts,.jsx,.tsx,.vue && npm run prettier --write --ignore-unknown"
+    "lint": "eslint src --fix --ext .js,.ts,.jsx,.tsx,.vue && npm run prettier --write --ignore-unknown",
+    "prepare": "husky install",
+    "pre-commit": "npx husky add .husky/pre-commit"
   },
   "lint-staged": {
     "*.{vue,js,ts,tsx,jsx}": [
