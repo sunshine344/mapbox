@@ -4,9 +4,10 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-18 14:14:55
  * @LastEditors  : Pat
- * @LastEditTime : 2022-04-12 14:30:37
+ * @LastEditTime : 2022-04-15 17:56:21
  */
-import request, { errorCatch, src } from '../config/request';
+import { errorCatch, src } from '../config/request';
+import { json } from '@elgis/request';
 interface AnyObject {
 	[key: string]: any;
 }
@@ -24,8 +25,7 @@ export interface userState {
  */
 export const Login = (params: userState): Promise<AnyObject> =>
 	new Promise((resolve, reject) => {
-		request
-			.json(`${src.value.BASE_URL}/user/login`, params)
+		json<userState, AnyObject>(`${src.value.BASE_URL}/user/login`, params)
 			.then((res: AnyObject) => {
 				resolve(res);
 			})

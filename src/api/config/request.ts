@@ -4,19 +4,13 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-18 13:45:36
  * @LastEditors  : Pat
- * @LastEditTime : 2022-04-12 15:08:16
+ * @LastEditTime : 2022-04-15 17:55:46
  */
 // import Route from "@router";
 import { config, ENV } from '@config/amb';
 import { actions, state } from '@store';
 import { getsub, removeSub } from '@shared/storage';
-import request, {
-	useRequest,
-	useResponse,
-	useConfig,
-	AxiosRequestConfig,
-	AxiosResponse,
-} from 'igu/lib/core/request';
+import { get, useRequest, useResponse, useConfig } from '@elgis/request';
 import { ref, Ref } from 'vue';
 import Message from '@components/Message';
 import { outputMessage } from '@config/message';
@@ -25,17 +19,15 @@ interface AnyObject {
 }
 
 useConfig({
-	defaults: {
-		// Set response time
-		timeout: 5 * 10000,
-		headers: {
-			// Set common configure request header
-			'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-		},
+	// Set response time
+	timeout: 5 * 10000,
+	headers: {
+		// Set common configure request header
+		'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
 	},
 });
 
-useRequest(({ url, method, ...requestConfig }: AxiosRequestConfig) => {
+useRequest(({ url, method, ...requestConfig }: AnyObject) => {
 	if (!config?.mock) {
 		const tk = getsub('token');
 		if (tk) {
@@ -45,7 +37,7 @@ useRequest(({ url, method, ...requestConfig }: AxiosRequestConfig) => {
 	return { url, method, ...requestConfig };
 });
 
-useResponse((res: AxiosResponse<any>) => {
+useResponse((res: AnyObject) => {
 	const { code } = res?.data || {};
 	if (code && (code == 302 || code == 401)) {
 		removeSub(['token', 'userInfo', 'menu', 'iportalMenu']);
@@ -61,7 +53,7 @@ export const requestApi: (callback: (api: AnyObject) => AnyObject) => void = (
 ) => {
 	try {
 		if (ENV === 'production') {
-			request.get('./ambiences.config.json').then((data: AnyObject) => {
+			get('./ambiences.config.json').then((data: AnyObject) => {
 				if (data) {
 					actions.setConfig(data);
 					src.value = data.api;
@@ -91,5 +83,3 @@ export const errorCatch: (error: AnyObject) => void = ({ response }: AnyObject) 
 		}
 	}
 };
-
-export default request;
