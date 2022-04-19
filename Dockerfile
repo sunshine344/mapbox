@@ -11,24 +11,22 @@ FROM node
 # # 存在package-lock.json时启用
 # ADD package-lock.json .
 
-# RUN npm install
+# RUN npm install --unsafe-perm=true
 
-# RUN npm run build:production
+# RUN npm run build:pro
 
-COPY dist/dist/ambiences.config.json /usr/share/config/ambiences.config.json
+ADD dist/egis-manage-web/ambiences.config.json /home/share/front/egis-manage-web/config/
 
 # # 将当期目录下的文件拷贝到linux系统的app文件夹下
 # COPY --from=build ./dist ./lib
 FROM nginx
 
-COPY dist/dist/ /usr/share/nginx/html/frontend-template/
+ADD dist/egis-manage-web/ /home/share/front/egis-manage-web/
 
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf
-
-# CMD docker run -t -d -p 8090:8090 --restart=always --name=frontend-template -v /usr/share/nginx/html/frontend-template/ambiences.config.json:/usr/share/config/ambiences.config.json frontend-template  
+ADD nginx/default.conf /etc/nginx/conf.d/default.conf
 
 # 暴露docker容器的80端口
-# EXPOSE 80
+EXPOSE 80
 
 # # 运行docker脚本命令 --net
 # CMD [ "npm", "run", "build" ]
