@@ -15,13 +15,13 @@ FROM node
 
 # RUN npm run build:pro
 
-ADD dist/egis-manage-web/ambiences.config.json /home/share/front/egis-manage-web/config/
+ADD dist/ambiences.config.json /home/share/front/config/
 
 # # 将当期目录下的文件拷贝到linux系统的app文件夹下
 # COPY --from=build ./dist ./lib
 FROM nginx
 
-ADD dist/egis-manage-web/ /home/share/front/egis-manage-web/
+ADD dist /home/share/front
 
 ADD nginx/default.conf /etc/nginx/conf.d/default.conf
 

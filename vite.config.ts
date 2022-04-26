@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2022-04-19 10:05:23
+ * @LastEditTime : 2022-04-26 13:16:41
  */
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
@@ -19,7 +19,7 @@ export default ({ mode }: ConfigEnv): any => {
 	const root = process.cwd();
 	const env = loadEnv(mode, root);
 	const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_LEGACY } = wrapperEnv(env);
-	const outDir = `dist/egis-manage-web`;
+	const outDir = `dist`;
 	// createJenkinsConfig(mode);
 	return defineConfig({
 		root,
@@ -69,14 +69,14 @@ export default ({ mode }: ConfigEnv): any => {
 			// outDir: OUT_DIR_NAME,
 			outDir,
 			polyfillDynamicImport: VITE_LEGACY,
-			// terserOptions: {
-			//     compress: {
-			//         keep_infinity: true,
-			//         drop_console: true,
-			//         drop_debugger: true,
-			//     },
-			// },
-			// minify: 'terser',
+			terserOptions: {
+			    compress: {
+			        keep_infinity: true,
+			        drop_console: true,
+			        drop_debugger: true,
+			    },
+			},
+			minify: 'terser',
 			rollupOptions: {
 				output: {
 					// compact: true,
@@ -103,10 +103,19 @@ export default ({ mode }: ConfigEnv): any => {
 			commonjsOptions: { ignore: [] },
 		},
 		css: {
-			preprocessorOptions: {
-				scss: {
-					charset: false,
-				},
+			postcss: {
+				plugins: [
+					{
+						postcssPlugin: 'internal:charset-removal',
+						AtRule: {
+							charset: atRule => {
+								if (atRule.name === 'charset') {
+									atRule.remove();
+								}
+							},
+						},
+					},
+				],
 			},
 		},
 		// Api reverse proxy

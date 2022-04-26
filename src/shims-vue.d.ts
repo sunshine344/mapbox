@@ -4,11 +4,23 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2022-04-12 15:25:09
+ * @LastEditTime : 2022-04-26 13:11:04
  */
 declare module '*.vue' {
 	import Vue from 'vue';
 	export default Vue;
+}
+
+declare module '@api/core/use' {
+	export const Login: (use: { username: string; password: string }) => Promise<any>;
+	const components: any;
+	export default components;
+}
+
+declare module '@api/config/request' {
+	export const requestApi: (callback?: (api: AnyObject) => AnyObject) => void;
+	const components: any;
+	export default components;
 }
 
 declare module '@config/amb' {
@@ -23,11 +35,21 @@ declare module '@components/*' {
 	export default components;
 }
 
+declare module '@shared/_utlis' {
+	export const output: (str: string, option?: any, key?: any) => any;
+	export const isType: (d: any, str: string) => string;
+	export const eachModules: (
+		arr: AnyObject,
+		callback: (key: any, item: AnyObject) => void,
+	) => any;
+}
+
 // declare module all files type
 // Prevent errors during development
 declare module '@shared/storage' {
 	export const getsub: (name: string) => any;
 	export const removeSub: (args: string | string[]) => void;
+	export const setup: (name: string, value: any) => void;
 	export default Storage;
 }
 
@@ -49,6 +71,7 @@ declare module '@/init/amb' {
 declare module '@router' {
 	import { Router } from 'vue-router';
 	const route: Router;
+	export const setRoute: (app: any) => void;
 	export default route;
 }
 

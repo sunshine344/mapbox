@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         //设置整个流水线的环境变量
-        PROJECT_NAME = 'egis-manage-web'
+        PROJECT_NAME = 'web'
         PROJECT_PORT = '8090'
 
         IMAGE_PORT = '2375'
