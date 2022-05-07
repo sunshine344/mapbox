@@ -30,7 +30,9 @@ v2-doc/
 Dockerfile
 public
 nginx
-Jenkinsfile.groovy
 .ambiences
 .browserslistrc
 .dockerignore
+.husky/
+Jenkins/
+*.tar

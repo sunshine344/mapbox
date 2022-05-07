@@ -1,10 +1,11 @@
+/* eslint-disable prettier/prettier */
 /*
  * @Autor        : Pat
  * @Description  :
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2022-04-12 08:50:57
  * @LastEditors  : Pat
- * @LastEditTime : 2022-04-12 15:51:49
+ * @LastEditTime : 2022-05-07 14:06:59
  */
 const { defineConfig } = require('eslint-define-config');
 
@@ -36,9 +37,39 @@ module.exports = defineConfig({
 	],
 	// https://cn.eslint.org/docs/rules/
 	rules: {
-		semi: ['error', 'always'],
+		'prettier/prettier': [
+			'error',
+			{
+				printWidth: 80,
+				tabWidth: 4,
+				useTabs: true,
+				singleQuote: true,
+				trailingComma: 'all',
+				endOfLine: 'auto',
+				proseWrap: 'always',
+				arrowParens: 'always',
+				htmlWhitespaceSensitivity: 'ignore',
+				semi: true,
+				quoteProps: 'as-needed',
+				jsxSingleQuote: false,
+				bracketSpacing: true,
+				bracketLine: true,
+				jsxBracketSameLine: false,
+			},
+		],
+		semi: 0,
 		// 优先使用 interface 而不是 type
-		'@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
+		'@typescript-eslint/consistent-type-definitions': [
+			'error',
+			'interface',
+		],
+		'vue/first-attribute-linebreak': [
+			'error',
+			{
+				singleline: 'ignore',
+				multiline: 'ignore',
+			},
+		],
 		'@typescript-eslint/no-explicit-any': 'off', // 可以使用 any 类型
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		// 解决使用 require() Require statement not part of import statement. 的问题
@@ -79,8 +110,9 @@ module.exports = defineConfig({
 		'no-var': 'error',
 		'no-console': [2, { allow: ['warn', 'error'] }],
 		'object-shorthand': 2,
-		'no-unused-vars': [2, { ignoreRestSiblings: true, argsIgnorePattern: '^_' }],
+		'no-unused-vars': 'off',
 		'vue/multi-word-component-names': 'off',
+		'vue/attribute-hyphenation': 'off',
 		'vue/no-v-html': 'off',
 		'vue/require-explicit-emits': 'off',
 		'vue/require-prop-types': 'off',

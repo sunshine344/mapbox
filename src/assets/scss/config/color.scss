@@ -1,20 +1,4 @@
 @charset 'utf-8';
-
-@font-face {
-    font-family: PingFangMedium;
-    src: url('~@assets/font/PingFang Medium.ttf')
-}
-
-@font-face {
-    font-family: PingFangLight;
-    src: url('~@assets/font/PingFang Light.ttf')
-}
-
-@font-face {
-    font-family: PingFangRegular;
-    src: url('~@assets/font/PingFang Regular.ttf')
-}
-
 :root {
     --default-font-family: "PingFangLight PingFangRegular PingFangMedium";
     // Page color

@@ -3,3 +3,5 @@ public
 dist
 .vscode
 .idea
+/src/assets/iconfont/
+.husky/

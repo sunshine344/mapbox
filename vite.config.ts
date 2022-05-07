@@ -4,12 +4,12 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-17 15:08:43
  * @LastEditors  : Pat
- * @LastEditTime : 2022-04-26 13:16:41
+ * @LastEditTime : 2022-04-26 19:15:09
  */
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 import { ambiences } from 'ambiences';
-import legacy from '@vitejs/plugin-legacy';
+// import legacy from '@vitejs/plugin-legacy';
 import { createProxy, wrapperEnv } from './config/common';
 import { defineConfig, ConfigEnv, loadEnv, PluginOption } from 'vite';
 export const pathResolve = (dir: string) => resolve(__dirname, '.', dir);
@@ -42,11 +42,11 @@ export default ({ mode }: ConfigEnv): any => {
 		},
 		plugins: [
 			vue(),
-			legacy({
-				targets: ['> 1%, last 1 version, ie >= 8'],
-				// 面向IE11时需要此插件
-				additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
-			}),
+			// legacy({
+			// 	targets: ['> 1%, last 1 version, ie >= 8'],
+			// 	// 面向IE11时需要此插件
+			// 	additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
+			// }),
 			ambiences('json', outDir, {
 				// 开发环境需要什么amb.*类型文件，可选 ts、tsx、js、jsx
 				env: 'ts',
@@ -70,11 +70,11 @@ export default ({ mode }: ConfigEnv): any => {
 			outDir,
 			polyfillDynamicImport: VITE_LEGACY,
 			terserOptions: {
-			    compress: {
-			        keep_infinity: true,
-			        drop_console: true,
-			        drop_debugger: true,
-			    },
+				compress: {
+					keep_infinity: true,
+					drop_console: true,
+					drop_debugger: true,
+				},
 			},
 			minify: 'terser',
 			rollupOptions: {

@@ -1,0 +1,20 @@
+{
+	"editor.formatOnPaste": false,
+	"editor.formatOnSave": false,
+	"editor.formatOnType": false,
+	"html.format.unformatted": "",
+	"vue3snippets.printWidth": 80,
+	"prettier.tabWidth": 4,
+	"prettier.useTabs": true,
+	"prettier.singleQuote": true,
+	"prettier.trailingComma": "all",
+	"prettier.endOfLine": "auto",
+	"prettier.proseWrap": "always",
+	"prettier.arrowParens": "always",
+	"prettier.htmlWhitespaceSensitivity": "ignore",
+	"prettier.semi": true,
+	"prettier.quoteProps": "as-needed",
+	"prettier.jsxSingleQuote": false,
+	"prettier.bracketSpacing": true,
+	"prettier.jsxBracketSameLine": false
+}
