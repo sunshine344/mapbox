@@ -4,20 +4,20 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2020-02-19 15:31:14
  * @LastEditors  : Pat
- * @LastEditTime : 2022-03-14 10:03:01
+ * @LastEditTime : 2022-05-09 16:07:56
  */
 import type { App } from 'vue';
 import routerBeforeEach from './permission';
 import constantRoutes from './core/constantRoutes';
 import {
 	createRouter,
-	createWebHashHistory,
+	createWebHistory,
 	RouteRecordRaw,
 	RouteLocationNormalized,
 	RouteLocationRaw,
 } from 'vue-router';
 const router = createRouter({
-	history: createWebHashHistory(), //createWebHashHistory or createWebHistory,
+	history: createWebHistory(), //createWebHashHistory or createWebHistory,
 	routes: [...constantRoutes] as RouteRecordRaw[],
 	strict: false,
 	async scrollBehavior(to: any, from: any, savedPosition: any) {

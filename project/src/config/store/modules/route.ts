@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2020-02-19 16:24:08
  * @LastEditors  : Pat
- * @LastEditTime : 2021-11-19 14:04:44
+ * @LastEditTime : 2022-05-09 18:44:03
  */
 import { AnyObject } from 'igu/lib/core/utils';
 import asyncRoutes from '@router/core/asyncRoutes';
@@ -84,7 +84,7 @@ const actions = {
 	) => {
 		iState.paths = resetRoute(filterAsyncRoutes(asyncRoutes, routes));
 		iState.addRoutes = routes;
-		iState.routes = constantRoutes.concat(routes);
+		iState.routes = constantRoutes.concat(routes as unknown as RouteRecordRaw[]);
 	},
 };
 

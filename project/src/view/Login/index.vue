@@ -1,6 +1,6 @@
 <!--
  * @Autor        : Pat
- * @Description  : 
+ * @Description  :
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-18 15:30:56
  * @LastEditors  : Pat
@@ -16,7 +16,7 @@
 				</div>
 				<div class="ruleForm">
 					<input
-						v-model="ues.username"
+						v-model="ues.userName"
 						type="text"
 						class="input"
 						placeholder="请输入用户名"
@@ -54,7 +54,7 @@ import { useRouter } from 'vue-router';
 import { actions, clearState } from '@store';
 
 const ues = reactive({
-	username: '',
+	userName: '',
 	password: '',
 });
 const route = ref();
@@ -85,8 +85,8 @@ async function iLogin() {
 }
 
 function verification() {
-	const { username, password } = ues;
-	return username && password;
+	const { userName, password } = ues;
+	return userName && password;
 }
 
 export default defineComponent({

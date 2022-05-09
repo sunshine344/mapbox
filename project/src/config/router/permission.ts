@@ -4,7 +4,7 @@
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-02-30 10:40:45
  * @LastEditors  : Pat
- * @LastEditTime : 2022-04-12 15:10:34
+ * @LastEditTime : 2022-05-09 18:45:42
  */
 import { setup } from '@shared/storage';
 import { isEqual } from 'igu/lib/core/basic';
@@ -39,7 +39,7 @@ const setAsyncRoute = (fullPath: any) => {
 	while (
 		i < currentFullPath.length &&
 		currentRoutes &&
-		currentRoutes.firstOf()
+		(currentRoutes as any).firstOf()
 	) {
 		let iRoute: any = currentRoutes.filter(({ path: iPaths }: AnyObject) =>
 			iPaths.includes(currentFullPath[i]),
@@ -103,7 +103,7 @@ const toLogin: (path: string) => void = (path: string) => {
  * @author: Pat
  */
 export default function ({ beforeEach, addRoute, removeRoute }: AnyObject) {
-	const home = (asyncRoutes || []).firstOf();
+	const home = ((asyncRoutes || []) as any).firstOf();
 
 	home && addRoute(home);
 	// This's vue router beforeEcah routers

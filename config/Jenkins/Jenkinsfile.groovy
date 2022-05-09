@@ -2,28 +2,35 @@ pipeline {
     agent any
 
     environment {
-        //设置整个流水线的环境变量
-        PROJECT_NAME = 'web'
-        PROJECT_PORT = '8090'
+        DOCKER_NAME = 'project'
+        // 系统名称
+        PROJECT_NAME = 'project-web'
+        // 系统运行端口
+        PROJECT_PORT = '8080'
 
+
+        // 容器TCP端口
         IMAGE_PORT = '2375'
+        // 容器端口
         BRIDGE_PORT = '5000'
 
-        
+
+        // 容器目标IP 1
         BRIDGE_HOST = '10.51.100.61'
+        // 容器目标IP 2
         TARGER_HOST = '10.51.100.80'
 
-        DOCKER_CONTAINER_PARAMETER = "-i -p ${PROJECT_PORT}:80 --restart=always --name=${PROJECT_NAME} " +
-                                     "-v /home/share/front/${PROJECT_NAME}/ambiences.config.json:"+
-                                     "/home/share/front/${PROJECT_NAME}/ambiences.config.json "
+
 
         IMAGE_TAG = "${env.BUILD_ID}"
         IMAGE_NAME = "${PROJECT_NAME}:${IMAGE_TAG}"
         REGISTRY_URI = "${BRIDGE_HOST}:${BRIDGE_PORT}/"
-        
         TCP_REGISTRY_URI = "tcp://${BRIDGE_HOST}:${IMAGE_PORT}"
         TCP_TARGER_URI = "tcp://${TARGER_HOST}:${IMAGE_PORT}"
         REGISTRY_IMAGE = "${REGISTRY_URI}${IMAGE_NAME}"
+        DOCKER_CONTAINER_PARAMETER = "-i -p ${PROJECT_PORT}:80 --restart=always --name=${PROJECT_NAME} " +
+                                     "-v /home/egis/${PROJECT_NAME}/ambiences.config.json:"+
+                                     "/etc/nginx/html/ambiences.config.json"
     }
 
     options {
@@ -36,11 +43,19 @@ pipeline {
     stages {
         stage('Environment Show') {
             steps {
-                echo "${env.PROJECT_NAME}"
-                echo "${env.DOCKER_CONTAINER_PARAMETER}"
-                echo "${env.IMAGE_TAG}"
-                echo "${env.IMAGE_NAME}"
-                echo "${env.REGISTRY_IMAGE}"
+                echo "PROJECT_NAME:${env.PROJECT_NAME}"
+                echo "PROJECT_PORT:${env.PROJECT_PORT}"
+                echo "IMAGE_PORT:${env.IMAGE_PORT}"
+                echo "BRIDGE_PORT:${env.BRIDGE_PORT}"
+                echo "BRIDGE_HOST:${env.BRIDGE_HOST}"
+                echo "TARGER_HOST:${env.TARGER_HOST}"
+                echo "REGISTRY_URI:${env.REGISTRY_URI}"
+                echo "TCP_TARGER_URI:${env.TCP_TARGER_URI}"
+                echo "TCP_REGISTRY_URI:${env.TCP_REGISTRY_URI}"
+                echo "DOCKER_CONTAINER_PARAMETER:${env.DOCKER_CONTAINER_PARAMETER}"
+                echo "IMAGE_TAG:${env.IMAGE_TAG}"
+                echo "IMAGE_NAME:${env.IMAGE_NAME}"
+                echo "REGISTRY_IMAGE:${env.REGISTRY_IMAGE}"
             }
         }
 
@@ -69,7 +84,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry("http://${REGISTRY_URI}") {
-                        def image = docker.build("${IMAGE_NAME}")
+                        def image = docker.build("${IMAGE_NAME}","./${DOCKER_NAME}")
                         image.push()
                     }
 
