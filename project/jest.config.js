@@ -8,9 +8,9 @@
  */
 
 const path = require('path');
-console.log(path.resolve(__dirname,'../'));
+console.log(path.resolve(__dirname, '../'));
 module.exports = {
-	rootDir: path.resolve(__dirname,'../'),
+	rootDir: path.resolve(__dirname, '../'),
 	verbose: true,
 	clearMocks: true,
 	coverageDirectory: 'coverage',

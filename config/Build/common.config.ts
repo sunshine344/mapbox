@@ -8,7 +8,7 @@ import ViteComponents, { AntDesignVueResolver } from 'vite-plugin-components';
 
 export const pathResolve = (dir: string) => resolve(__dirname, '../../', dir);
 export const alias = {
-	'_common': `${pathResolve('common')}`,
+	_common: `${pathResolve('common')}`,
 	'@': `${pathResolve('project/src')}`,
 	'@api': `${pathResolve('project/src/api')}`,
 	'@view': `${pathResolve('project/src/view')}`,
