@@ -84,7 +84,9 @@ const actions = {
 	) => {
 		iState.paths = resetRoute(filterAsyncRoutes(asyncRoutes, routes));
 		iState.addRoutes = routes;
-		iState.routes = constantRoutes.concat(routes as unknown as RouteRecordRaw[]);
+		iState.routes = constantRoutes.concat(
+			routes as unknown as RouteRecordRaw[],
+		);
 	},
 };
 

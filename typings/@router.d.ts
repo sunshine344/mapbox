@@ -1,5 +1,3 @@
-
-
 declare module '@router' {
 	import type { App } from 'vue';
 	import type { Router } from 'vue-router';
@@ -9,12 +7,12 @@ declare module '@router' {
 
 declare module '@router/core/constantRoutes' {
 	import type { RouteRecordRaw } from 'vue-router';
-	const constantRoutes:RouteRecordRaw[];
+	const constantRoutes: RouteRecordRaw[];
 	export default constantRoutes;
 }
 
 declare module '@router/core/asyncRoutes' {
 	import type { RouteRecordRaw } from 'vue-router';
-	const asyncRoutes:RouteRecordRaw[];
+	const asyncRoutes: RouteRecordRaw[];
 	export default asyncRoutes;
 }
