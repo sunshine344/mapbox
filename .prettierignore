@@ -36,3 +36,4 @@ nginx
 .husky/
 Jenkins/
 *.tar
+package-lock.json

@@ -1,0 +1,250 @@
+.login {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	// --defaultColor: #09f;
+	--auxColor: rgb(0, 255, 157);
+	--spacing: 0.9375rem;
+	--defaultTileSize: 2rem;
+	--border: 0.0625rem solid var(--defaultColor);
+	--sphereWidth: 180px;
+	overflow: hidden;
+
+	* {
+		box-sizing: border-box;
+	}
+
+	margin: 0;
+	padding: 0;
+
+	.wrap {
+		width: 100%;
+		height: 100%;
+		padding: 2.5rem 0;
+		position: fixed;
+		opacity: 0.8;
+		display: flex;
+		background: linear-gradient(
+			to bottom right,
+			rgb(0, 21, 42),
+			var(--defaultColor)
+		);
+
+		ul {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -10;
+
+			li {
+				list-style-type: none;
+				display: block;
+				position: absolute;
+				bottom: -7.5rem;
+				width: 0.9375rem;
+				height: 0.9375rem;
+				z-index: -8;
+				background-color: rgba(255, 255, 255, 0.15);
+				animation: square 25s infinite;
+
+				@for $i from 1 through 10 {
+					$nw: (random(2) + 4) + rem;
+
+					&:nth-child(#{$i}) {
+						width: $nw;
+						height: $nw;
+						left: 10% * ($i - 1);
+						animation-delay: (random(10) + 4) + s;
+						animation-duration: (random(6) + 4) + s;
+					}
+				}
+
+				&:nth-child(1) {
+					width: (random(2) + 4) + rem;
+					height: (random(2) + 4) + rem;
+					left: 0;
+					animation-delay: 0;
+					animation-duration: 6s;
+				}
+			}
+		}
+
+		@keyframes rotateSphere {
+			to {
+				transform: rotateX(360deg) rotateY(360deg);
+			}
+		}
+
+		@keyframes fadeIn {
+			from,
+			to {
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 1;
+			}
+		}
+
+		.sphere,
+		.ring {
+			animation: rotateSphere 20s linear infinite;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			z-index: -1;
+
+			@for $i from 1 through 10 {
+				&:nth-of-type(#{$i}) {
+					transform: rotateX(18deg * $i);
+				}
+			}
+		}
+
+		.sphere {
+			transform-style: preserve-3d;
+			width: var(--sphereWidth);
+			height: var(--sphereWidth);
+			left: calc(50% - (var(--sphereWidth) / 2));
+			top: calc(50% - (var(--sphereWidth) / 2));
+
+			&:nth-of-type(2) {
+				@for $i from 1 through 10 {
+					.ring_#{$i} {
+						transform: rotateX(18deg * $i);
+					}
+				}
+			}
+
+			.ring {
+				border: 1px solid;
+				box-sizing: border-box;
+				border-radius: 50%;
+				opacity: 0;
+				animation: fadeIn 2000ms ease infinite;
+				box-shadow: 0 0 80px rgba(255, 255, 255, 0.2),
+					inset 0 0 80px rgba(255, 255, 255, 0.2);
+
+				@for $i from 1 through 10 {
+					&.ring_#{$i} {
+						border-color: var(--auxColor);
+						opacity: 0.1 * $i;
+						animation-delay: 200ms * $i;
+					}
+				}
+			}
+		}
+
+		.container {
+			width: 60%;
+			margin: auto;
+
+			.loginTitle {
+				width: 100%;
+				height: 100%;
+				position: relative;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				h1,
+				h2 {
+					display: inline-block;
+					text-align: center;
+				}
+
+				.logImg {
+					width: calc(var(--headerHeight) - (var(--spacing) * 2));
+					height: calc(var(--headerHeight) - (var(--spacing) * 2));
+				}
+			}
+
+			h1,
+			h2 {
+				text-align: center;
+				color: #ffffff;
+				font-size: var(--defaultTileSize);
+				font-weight: 500;
+				padding: var(--spacing);
+			}
+
+			.ruleForm {
+				width: 23.75rem;
+				margin: auto;
+				padding-top: var(--spacing);
+
+				.input {
+					color: #ffffff;
+					display: block;
+					height: var(--defaultHeight);
+					outline: 0;
+					padding: 0.375rem 0.625rem;
+					line-height: var(--defaultHeight);
+					transition: all 0.4s ease-in 0.1ms;
+					width: 100%;
+					color: var(--defaultColor);
+					font-size: var(--subtitleSize);
+					--placeholderColor: #ccc;
+					background-color: rgba(48, 185, 213, 0);
+					border: var(--border);
+
+					&::-webkit-input-placeholder {
+						color: var(--placeholderColor);
+					}
+
+					&::-moz-placeholder {
+						color: var(--placeholderColor);
+					}
+
+					&:-moz-placeholder {
+						color: var(--placeholderColor);
+					}
+
+					&:-ms-input-placeholder {
+						color: var(--placeholderColor);
+					}
+
+					&:first-child {
+						border-radius: var(--radius) var(--radius) 0 0;
+						border-bottom: 0;
+					}
+
+					&.last-child {
+						border-radius: 0 0 var(--radius) var(--radius);
+					}
+				}
+			}
+
+			.Login {
+				margin-top: var(--spacing);
+				display: block;
+				text-align: center;
+				padding: 0.375rem 0.625rem;
+				height: var(--defaultHeight);
+				line-height: calc(var(--defaultHeight) / 2);
+				width: 100%;
+				font-size: var(--subtitleSize);
+				letter-spacing: 0.125rem;
+				border-radius: var(--radius);
+				color: var(--defaultColor);
+				border: var(--border);
+				background: none;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+@keyframes square {
+	0% {
+		transform: translateY(0);
+	}
+
+	100% {
+		bottom: 100%;
+		transform: rotate(600deg);
+		transform: translateY(-500);
+	}
+}

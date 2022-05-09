@@ -1,33 +1,33 @@
 {
-  "compilerOptions": {
-    "types": ["vite/client"],
-    "target": "esnext",
-    "allowJs": true,
-    "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "isolatedModules": false,
-    "lib": ["esnext", "dom"],
-    "baseUrl": "./",
-    "paths": {
-      "@/": ["./src/*"],
-      "@api/": ["./src/api/*"],
-      "@scss/": ["./src/scss/*"],
-      "@view/": ["./src/view/*"],
-      "@images/": ["./src/images/*"],
-      "@config/": ["./src/config/*"],
-      "@shared/": ["./src/shared/*"],
-      "@store/": ["./src/config/store/*"],
-      "@router/": ["./src/config/router/*"],
-      "@containers/": ["./src/containers/*"],
-      "@components/": ["./src/components/*"]
-    }
-  },
-  "exclude": ["node_modules", "dist"],
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+	"compilerOptions": {
+		"types": ["vite/client"],
+		"target": "esnext",
+		"allowJs": true,
+		"useDefineForClassFields": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"strict": true,
+		"jsx": "preserve",
+		"sourceMap": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"isolatedModules": false,
+		"lib": ["esnext", "dom"],
+		"baseUrl": "./",
+		"paths": {
+			"@": ["./project/src/*"],
+			"_common": ["./common/*"],
+			"@api": ["./project/src/api/*"],
+			"@scss": ["./project/src/scss/*"],
+			"@view": ["./project/src/view/*"],
+			"@images": ["./project/src/images/*"],
+			"@config": ["./project/src/config/*"],
+			"@shared": ["./project/src/shared/*"],
+			"@store": ["./project/src/config/store/*"],
+			"@router": ["./project/src/config/router/*"],
+			"@containers": ["./project/src/containers/*"],
+			"@components": ["./project/src/components/*"]
+		}
+	},
+	"exclude": ["node_modules", "dist"]
 }

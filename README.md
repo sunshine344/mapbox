@@ -2,14 +2,14 @@
 
 2022 年易利数科产品二部前端开发脚手架模板
 
-- Vue3.x + vite2.x + ECMAScript6 + TypeScript
-- 遗弃 Vuex，使用 Vue3 readonly、 reactive 代替
-- Jenkins 自动化集成
-- Docker 前端自动化部署
-- Postcss + sass + style var 样式配置统一管理
-- Jest 单元测试，减少代码 BUG 率
-- 根据配置文件生成多环境、页面配置，打包后自动生成配置文件 json
-- Mockjs 前后端分离前端数据模拟
+-   Vue3.x + vite2.x + ECMAScript6 + TypeScript
+-   遗弃 Vuex，使用 Vue3 readonly、 reactive 代替
+-   Jenkins 自动化集成
+-   Docker 前端自动化部署
+-   Postcss + sass + style var 样式配置统一管理
+-   Jest 单元测试，减少代码 BUG 率
+-   根据配置文件生成多环境、页面配置，打包后自动生成配置文件 json
+-   Mockjs 前后端分离前端数据模拟
 
 ## 初始化
 
@@ -47,9 +47,11 @@ yarn test
 
 [ambiences]: https://www.npmjs.com/package/ambiences
 
-环境配置采用 [ambiences][ambiences] 多环境 webpck\vite plugins 配置生成当前环境配置（解决多余 IP 暴露引起的安全性问题）。
+环境配置采用 [ambiences][ambiences] 多环境 webpck\vite plugins 配置生成当前环境
+配置（解决多余 IP 暴露引起的安全性问题）。
 
-在打包配置文件(`vite.config.js`) 内 `plugins` 添加 `ambiences(build_file_type, build_file_name)`;
+在打包配置文件(`vite.config.js`) 内 `plugins` 添加
+`ambiences(build_file_type, build_file_name)`;
 
 ### .ambiences 配置示例
 
@@ -82,52 +84,59 @@ systemName = "Production system name";
 
 ```json
 {
-  "scripts": {
-    "dev": "vite --host --mode NODE_ENV=dev",
-    "pro": "vite --host --mode NODE_ENV=production",
-    "build": "vue-tsc --noEmit && vite build --mode NODE_ENV=production",
-    "build:pro": "vite build --mode NODE_ENV=production"
-  }
+	"scripts": {
+		"dev": "vite --host --mode NODE_ENV=dev",
+		"pro": "vite --host --mode NODE_ENV=production",
+		"build": "vue-tsc --noEmit && vite build --mode NODE_ENV=production",
+		"build:pro": "vite build --mode NODE_ENV=production"
+	}
 }
 ```
 
 ## Mock
 
-在开发环境下 `mock` 应该为启用。添加新的数据接口时都需要在 `mock/model` 下添加对应文件 `xxx.mock.(t|j)s`。
+在开发环境下 `mock` 应该为启用。添加新的数据接口时都需要在 `mock/model` 下添加对
+应文件 `xxx.mock.(t|j)s`。
 
 示例请查看 `mock/model/login.mock.ts`
 
 ## Api
 
-`src/amb.js` 文件 `api` 参数为数据接口配置。`src/api/request` 是`axios`二次封装成果，大致配置与`axios`相同，暴露`['put', 'post', 'get', 'delete', 'head', 'patch','json','formData','uploadFile','upload']`等请求方法。
+`src/amb.js` 文件 `api` 参数为数据接口配置。`src/api/request` 是`axios`二次封装
+成果，大致配置与`axios`相同，暴
+露`['put', 'post', 'get', 'delete', 'head', 'patch','json','formData','uploadFile','upload']`等
+请求方法。
 
 每个模块的请求都单独一个文件新建到 `src/api/core` 下。
 
-`src/api/index.ts` 引入导出一个 `outputAPI(apiName:string)` ，如：`outputAPI('use.Login')`
+`src/api/index.ts` 引入导出一个 `outputAPI(apiName:string)` ，如
+：`outputAPI('use.Login')`
 
 ```ts
 import outputApi, { RequestObject } from '@api';
 outputApi('use.Login')({
-  username: 'admin',
-  password: 'test123456',
+	username: 'admin',
+	password: 'test123456',
 }).then(({ data, msg, code }: RequestObject) => {
-  console.log(data, msg, code);
+	console.log(data, msg, code);
 });
 
 // or
 import type { RequestObject } from '@api';
 import { Login } from '@api/core/use';
 Login({
-  username: 'admin',
-  password: 'test123456',
+	username: 'admin',
+	password: 'test123456',
 }).then(({ data, msg, code }: RequestObject) => {
-  console.log(data, msg, code);
+	console.log(data, msg, code);
 });
 ```
 
 ## components
 
-`src/components` 自定义公共组件。每一个组件命名采用大驼峰命名，并且一个组件一个文件夹，每个文件夹都必须包含出口文件和说明文件。`src/containers`文件要求一致，不过`src/containers`是业务组件（由公共组件组合改装生成）。以`Message`为例如：
+`src/components` 自定义公共组件。每一个组件命名采用大驼峰命名，并且一个组件一个
+文件夹，每个文件夹都必须包含出口文件和说明文件。`src/containers`文件要求一致，不
+过`src/containers`是业务组件（由公共组件组合改装生成）。以`Message`为例如：
 
 ```
 |--- Message (组件名称命名)
@@ -145,59 +154,61 @@ Login({
 
 `src/config/router` 系统路由配置。
 
-- 静态路由配置 `src/config/router/core/constantRoutes.ts`
-- 动态路由配置 `src/config/router/core/asyncRoutes.ts`
-- 路由拦截配置 `src/config/router/permission.ts` 路由配置必须以异步的方式进行配置，如：
+-   静态路由配置 `src/config/router/core/constantRoutes.ts`
+-   动态路由配置 `src/config/router/core/asyncRoutes.ts`
+-   路由拦截配置 `src/config/router/permission.ts` 路由配置必须以异步的方式进行
+    配置，如：
 
 ```typescript
 import type { RouteRecordRaw } from 'vue-router';
 export default [
-  {
-    path: '/home',
-    name: '首页',
-    component: () => import('@view/Home.vue'),
-  },
+	{
+		path: '/home',
+		name: '首页',
+		component: () => import('@view/Home.vue'),
+	},
 ] as RouteRecordRaw[];
 ```
 
 ## Store
 
-`src/config/store` 系统状态存储机配置。只需要在`src/config/store/modules` 文件夹下添加对应的模块名称命名的`.(t|j)s`文件和对应配置即可，如： // page.ts
+`src/config/store` 系统状态存储机配置。只需要在`src/config/store/modules` 文件夹
+下添加对应的模块名称命名的`.(t|j)s`文件和对应配置即可，如： // page.ts
 
 ```typescript
 const state = {
-  user: {},
-  collapseState: false,
+	user: {},
+	collapseState: false,
 };
 
 const mutations = {
-  SET_USERINFO: (state: any, user: any) => {
-    state.user = user;
-  },
-  SET_COLLAPSE: (state: any, collapseState: boolean) => {
-    state.collapseState = collapseState;
-  },
+	SET_USERINFO: (state: any, user: any) => {
+		state.user = user;
+	},
+	SET_COLLAPSE: (state: any, collapseState: boolean) => {
+		state.collapseState = collapseState;
+	},
 };
 
 const actions = {
-  generateUser({ commit }: any, info: any) {
-    return new Promise(resolve => {
-      commit('SET_USERINFO', info);
-      resolve(info);
-    });
-  },
-  generateCollapseState({ commit }: any, state: boolean) {
-    return new Promise(resolve => {
-      commit('SET_COLLAPSE', state);
-      resolve(state);
-    });
-  },
+	generateUser({ commit }: any, info: any) {
+		return new Promise((resolve) => {
+			commit('SET_USERINFO', info);
+			resolve(info);
+		});
+	},
+	generateCollapseState({ commit }: any, state: boolean) {
+		return new Promise((resolve) => {
+			commit('SET_COLLAPSE', state);
+			resolve(state);
+		});
+	},
 };
 export default {
-  namespaced: true,
-  state,
-  mutations,
-  actions,
+	namespaced: true,
+	state,
+	mutations,
+	actions,
 };
 ```
 
@@ -289,11 +300,13 @@ console.log(outputStore('page.user'));
 
 必须执行公司内部前端开发规范、W3C 规范以及基础框架原始[规范 A][vue-a]。
 
-- 每一个功能模块及其组件必须对应编写单元测试文件并且跑通该文件
+-   每一个功能模块及其组件必须对应编写单元测试文件并且跑通该文件
 
-[anchor-id]: https://alidocs.dingtalk.com/i/team/vr4zEP0pwnLlGDYq/docs/vr4zEWrKVpKAMmDY?corpId=ding487f5e746371c086&iframeQuery=#
+[anchor-id]:
+	https://alidocs.dingtalk.com/i/team/vr4zEP0pwnLlGDYq/docs/vr4zEWrKVpKAMmDY?corpId=ding487f5e746371c086&iframeQuery=#
 
-请访问公司内部文件（钉钉内文档->团队空间->工程中心知识库->基本前端开发规范） [易利科技前端开发规范说明书 V1.1.docx][anchor-id]
+请访问公司内部文件（钉钉内文档->团队空间->工程中心知识库->基本前端开发规范） [易
+利科技前端开发规范说明书 V1.1.docx][anchor-id]
 
 ## 单元测试
 
