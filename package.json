@@ -10,7 +10,8 @@
 		"test:watch": "jest --config ./project/jest.config.js --watch",
 		"test:coverage": "jest --config ./project/jest.config.js --coverage",
 		"prettier": "prettier -c --write **/*",
-		"lint": "eslint project/src --fix --ext .js,.ts,.jsx,.tsx,.vue && npm run prettier --write --ignore-unknown",
+		"lint": "npm run lint:pro --write --ignore-unknown",
+		"lint:pro": "eslint project/src --fix --ext .js,.ts,.jsx,.tsx,.vue ",
 		"prepare": "husky install",
 		"pre-commit": "npx husky add .husky/pre-commit"
 	},
