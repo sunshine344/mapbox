@@ -9,7 +9,6 @@
  */
 import { resolve } from 'path';
 import {
-	alias,
 	setPlugins,
 	defineConfigs,
 	build,
@@ -17,7 +16,7 @@ import {
 } from '../config/Build/common.config';
 import { defineConfig, ConfigEnv, UserConfigExport, loadEnv } from 'vite';
 import { wrapperEnv, createProxy } from '../config/Build/common';
-export const pathResolve = (dir: string) => resolve(__dirname, '.', dir);
+const rootResolve = (dir: string) => resolve(__dirname, '../project', dir);
 export default ({ mode }: ConfigEnv): UserConfigExport => {
 	const type = 'project';
 	const root = `${process.cwd()}/${type}`;
@@ -28,7 +27,22 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
 	return defineConfig({
 		root,
 		resolve: {
-			alias,
+			alias: {
+				_common: resolve(__dirname, '../common'),
+				'@': `${rootResolve('src')}`,
+				'@api': `${rootResolve('src/api')}`,
+				'@view': `${rootResolve('src/view')}`,
+				'@shared': `${rootResolve('src/shared')}`,
+				'@config': `${rootResolve('src/config')}`,
+				'@scss': `${rootResolve('src/assets/scss')}`,
+				'@store': `${rootResolve('src/config/store')}`,
+				'@templates': `${rootResolve('src/templates')}`,
+				'@enum': `${rootResolve('src/config')}/enum.ts`,
+				'@images': `${rootResolve('src/assets/images')}`,
+				'@router': `${rootResolve('src/config/router')}`,
+				'@components': `${rootResolve('src/components')}`,
+				'@containers': `${rootResolve('src/containers')}`,
+			},
 			extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
 		},
 		plugins: setPlugins(type, outDir),

@@ -13,7 +13,7 @@
 		"esModuleInterop": true,
 		"isolatedModules": false,
 		"lib": ["esnext", "dom"],
-		"baseUrl": "./",
+		"baseUrl": "./"
 	},
 	"references": [{ "path": "./project" }],
 	"exclude": ["node_modules", "dist"],

@@ -5,25 +5,7 @@ import { ambiences } from '@elgis/ambiences';
 // import legacy from '@vitejs/plugin-legacy';
 import { PluginOption, UserConfigExport, BuildOptions } from 'vite';
 import ViteComponents, { AntDesignVueResolver } from 'vite-plugin-components';
-
 export const pathResolve = (dir: string) => resolve(__dirname, '../../', dir);
-export const alias = {
-	_common: `${pathResolve('common')}`,
-	'@': `${pathResolve('project/src')}`,
-	'@api': `${pathResolve('project/src/api')}`,
-	'@view': `${pathResolve('project/src/view')}`,
-	'@shared': `${pathResolve('project/src/shared')}`,
-	'@config': `${pathResolve('project/src/config')}`,
-	'@scss': `${pathResolve('project/src/assets/scss')}`,
-	'@store': `${pathResolve('project/src/config/store')}`,
-	'@templates': `${pathResolve('project/src/templates')}`,
-	'@enum': `${pathResolve('project/src/config')}/enum.ts`,
-	'@images': `${pathResolve('project/src/assets/images')}`,
-	'@router': `${pathResolve('project/src/config/router')}`,
-	'@components': `${pathResolve('project/src/components')}`,
-	'@containers': `${pathResolve('project/src/containers')}`,
-};
-
 export const setPlugins = (
 	inputDir: string,
 	outDir: string,

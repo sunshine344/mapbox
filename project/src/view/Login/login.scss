@@ -2,13 +2,14 @@
 	width: 100%;
 	height: 100%;
 	position: relative;
-	// --defaultColor: #09f;
+	// --default-color: #09f;
 	--auxColor: rgb(0, 255, 157);
 	--spacing: 0.9375rem;
 	--defaultTileSize: 2rem;
-	--border: 0.0625rem solid var(--defaultColor);
-	--sphereWidth: 180px;
+	--border: 0.0625rem solid var(--default-color);
+	--sphereWidth: 580px;
 	overflow: hidden;
+    background-color: var(--default-color);
 
 	* {
 		box-sizing: border-box;
@@ -27,7 +28,7 @@
 		background: linear-gradient(
 			to bottom right,
 			rgb(0, 21, 42),
-			var(--defaultColor)
+			var(--default-color)
 		);
 
 		ul {
@@ -184,7 +185,7 @@
 					line-height: var(--defaultHeight);
 					transition: all 0.4s ease-in 0.1ms;
 					width: 100%;
-					color: var(--defaultColor);
+					color: var(--default-color);
 					font-size: var(--subtitleSize);
 					--placeholderColor: #ccc;
 					background-color: rgba(48, 185, 213, 0);
@@ -228,7 +229,7 @@
 				font-size: var(--subtitleSize);
 				letter-spacing: 0.125rem;
 				border-radius: var(--radius);
-				color: var(--defaultColor);
+				color: var(--default-color);
 				border: var(--border);
 				background: none;
 				cursor: pointer;
