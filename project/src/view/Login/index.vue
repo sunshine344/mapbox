@@ -65,7 +65,7 @@ interface AnyObject {
 	[key: string]: any;
 }
 
-async function iLogin() {
+function iLogin() {
 	if (!verification()) {
 		Message.error('请输入用户名/密码');
 		return;
