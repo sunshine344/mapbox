@@ -115,7 +115,7 @@ export default defineComponent({
 								RouterLink,
 								{
 									class: 'tohome',
-									to: '/home',
+									to: '/',
 								},
 								{
 									default: withCtx(() => [

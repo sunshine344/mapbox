@@ -46,7 +46,7 @@ useResponse((res: AnyObject) => {
 	return res.data;
 });
 
-export const src: Ref<AnyObject> = ref(state.config.api);
+export const src: Ref<AnyObject> = ref(state.sys.api);
 
 export const requestApi: (callback: (api: AnyObject) => AnyObject) => void = (
 	callback?: (api: AnyObject) => AnyObject,

@@ -18,12 +18,11 @@ export default [
 		component: () => import('@view/Error/index.ts'),
 	},
 	{
-		path: '/login',
-		name: 'Login',
+		path: '/',
+		name: 'Home',
 		meta: {
-			isAuth: true,
-			name: '用户登录',
+			name: '首页',
 		},
-		component: () => import('@view/Login/index.vue'),
+		component: () => import('@view/Home.vue'),
 	},
 ] as RouteRecordRaw[];

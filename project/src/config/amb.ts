@@ -8,7 +8,7 @@ export const api:AnyObject = {
 };
 export const config:AnyObject = {
      "mock":true,
-     "systemName":"DevDependenciessystemname",
+     "systemName":"前端开发模版-template-vue",
 };
         
 export default {ENV, ENV_URL,api,config}
