@@ -1,6 +1,6 @@
-# Eli for front end cli
+# README
 
-2022 年易利数科产品二部前端开发脚手架模板
+Vue3+TS 前端开发脚手架模板
 
 -   Vue3.x + vite2.x + ECMAScript6 + TypeScript
 -   遗弃 Vuex，使用 Vue3 readonly、 reactive 代替
