@@ -302,12 +302,6 @@ console.log(outputStore('page.user'));
 
 -   每一个功能模块及其组件必须对应编写单元测试文件并且跑通该文件
 
-[anchor-id]:
-	https://alidocs.dingtalk.com/i/team/vr4zEP0pwnLlGDYq/docs/vr4zEWrKVpKAMmDY?corpId=ding487f5e746371c086&iframeQuery=#
-
-请访问公司内部文件（钉钉内文档->团队空间->工程中心知识库->基本前端开发规范） [易
-利科技前端开发规范说明书 V1.1.docx][anchor-id]
-
 ## 单元测试
 
 [vue-test]: https://vue-test-utils.vuejs.org/zh/guides/
