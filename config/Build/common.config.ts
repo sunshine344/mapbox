@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
-import { ambiences } from '@elgis/ambiences';
+import {ambiences,DevConfig} from 'ambiences';
 // import legacy from '@vitejs/plugin-legacy';
-import { PluginOption, UserConfigExport, BuildOptions } from 'vite';
+import { UserConfigExport, BuildOptions } from 'vite';
 import ViteComponents, { AntDesignVueResolver } from 'vite-plugin-components';
 export const pathResolve = (dir: string) => resolve(__dirname, '../../', dir);
 export const setPlugins = (
@@ -27,7 +27,7 @@ export const setPlugins = (
 		env: 'ts',
 		// 开发环境中配置文件输出到什么目录
 		path: `${inputDir}/${path}`,
-	}) as unknown as PluginOption,
+	} as DevConfig),
 ];
 
 export const build: BuildOptions = {

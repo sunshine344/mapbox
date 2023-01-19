@@ -3,14 +3,14 @@
  * @Description  :
  * @Email        : gouqingping@yahoo.com
  * @Date         : 2021-09-18 13:45:36
- * @LastEditors  : Pat
- * @LastEditTime : 2022-04-15 17:55:46
+ * @LastEditors  : GGos
+ * @LastEditTime : 2022-10-12 14:32:09
  */
 // import Route from "@router";
 import { config, ENV } from '@config/amb';
 import { actions, state } from '@store';
 import { getsub, removeSub } from '@shared/storage';
-import { get, useRequest, useResponse, useConfig } from '@elgis/request';
+import { get, useRequest, useResponse, useConfig } from 'axios-https';
 import { ref, Ref } from 'vue';
 import Message from '@components/Message';
 import { outputMessage } from '@config/message';
@@ -41,9 +41,12 @@ useResponse((res: AnyObject) => {
 	const { code } = res?.data || {};
 	if (code && (code == 302 || code == 401)) {
 		removeSub(['token', 'userInfo', 'menu', 'iportalMenu']);
-		// Route.push("/login");
 	}
-	return res.data;
+	if (res?.data || ['200', '201'].includes(res?.status)) {
+		return res.data || res.statusText;
+	} else {
+		return Promise.reject(res?.response?.data);
+	}
 });
 
 export const src: Ref<AnyObject> = ref(state.sys.api);

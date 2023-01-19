@@ -6,4 +6,6 @@ dist-ssr
 package-lock.json
 yarn.lock
 *.tar
+*/amb.*
 amb.*
+pnpm-lock.yaml
