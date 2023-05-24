@@ -9,12 +9,13 @@
 
 <template>
 	<div class="el-flex">
-		<h1 style="font-size: 64px; margin: 10%">{{ systemName }}</h1>
-		<h1 style="font-size: 24px">{{ hallo }}</h1>
+		<Mapbox />
 	</div>
 </template>
 <script setup lang="ts">
 import { state } from '@store';
+import Mapbox from './Mapbox/index.vue';
+
 const {
 	sys: {
 		config: { systemName },
@@ -30,5 +31,9 @@ const hallo = `Welcome to Vue framework front-end team development template`;
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: #2c3e50;
+}
+.el-flex{
+	height: 100%;
+	width: 100%;
 }
 </style>

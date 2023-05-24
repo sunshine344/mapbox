@@ -1,0 +1,13 @@
+.mapbox {
+  height: 100%;
+  width: 100%;
+  &-map{
+    height: 100%;
+    width: 100%;
+  }
+  &-switch{
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+  }
+}

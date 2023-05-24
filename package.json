@@ -24,6 +24,7 @@
 		}
 	},
 	"dependencies": {
+		"@cgcs2000/mapbox-gl": "^2.3.0",
 		"axios-https": "^1.0.0",
 		"igu": "^1.1.7",
 		"sass": "^1.41.1",
